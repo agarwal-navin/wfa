@@ -472,6 +472,32 @@ body {
   background: #475569;
 }
 
+.inferred-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.inferred-note {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: var(--warn);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
 .section ul {
   margin: 0;
   padding: 10px 16px 14px 32px;

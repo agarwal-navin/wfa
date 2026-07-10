@@ -504,6 +504,7 @@ window.WFA_DEFAULT_DATA = {
       id: "shock",
       name: "Shock",
       category: "Circulation & Shock",
+      inferred: ["signs", "management"],
       signs: [
         "Inadequate perfusion - signs depend on the underlying cause.",
         "May accompany bleeding, trauma, spinal injury (neurogenic), or sepsis (septic)."
@@ -627,6 +628,7 @@ window.WFA_DEFAULT_DATA = {
       id: "sepsis",
       name: "Sepsis / Septic Shock",
       category: "Wounds & Soft Tissue",
+      inferred: ["management"],
       signs: [
         "Fever.",
         "Fast heart rate.",
@@ -646,6 +648,7 @@ window.WFA_DEFAULT_DATA = {
       id: "burns",
       name: "Burns",
       category: "Burns",
+      inferred: ["signs"],
       signs: [
         "Superficial, partial thickness, or full thickness burns."
       ],
@@ -682,6 +685,7 @@ window.WFA_DEFAULT_DATA = {
       id: "impalement",
       name: "Impalement",
       category: "Wounds & Soft Tissue",
+      inferred: ["signs"],
       signs: [
         "Object embedded in the body."
       ],
@@ -727,11 +731,13 @@ window.WFA_DEFAULT_DATA = {
       id: "rib-fracture",
       name: "Rib Fracture",
       category: "Chest Trauma",
+      inferred: ["signs", "management"],
       signs: [
         "Pain, especially with breathing."
       ],
       management: [
-        "Pain management and monitoring."
+        "Pain management and monitoring.",
+        "Keep breathing deeply and cough to help prevent pneumonia."
       ],
       notes: [
         "Isolated rib fractures are painful but generally benign."
@@ -741,13 +747,15 @@ window.WFA_DEFAULT_DATA = {
       id: "pneumothorax",
       name: "Pneumothorax",
       category: "Chest Trauma",
+      inferred: ["management"],
       signs: [
         "Sudden chest pain.",
         "Shortness of breath."
       ],
       management: [
         "Seal any open wound with a gloved hand, then an occlusive dressing.",
-        "Monitor ABCs and evacuate."
+        "Monitor ABCs and evacuate.",
+        "Watch for a developing tension pneumothorax."
       ],
       notes: [
         "Air entering the space between the lung & chest wall; can cause the lung to collapse partially or fully.",
@@ -758,8 +766,8 @@ window.WFA_DEFAULT_DATA = {
       id: "tension-pneumothorax",
       name: "Tension Pneumothorax",
       category: "Chest Trauma",
+      inferred: ["management"],
       signs: [
-        "Worsening shortness of breath, severe distress.",
         "Compromised ABCs."
       ],
       management: [
@@ -790,6 +798,7 @@ window.WFA_DEFAULT_DATA = {
       id: "lung-contusion",
       name: "Lung Contusion",
       category: "Chest Trauma",
+      inferred: ["management"],
       signs: [
         "Shortness of breath.",
         "Chest pain.",
@@ -806,6 +815,7 @@ window.WFA_DEFAULT_DATA = {
       id: "cardiac-tamponade",
       name: "Cardiac Tamponade",
       category: "Heart / Cardiac",
+      inferred: ["signs", "management"],
       signs: [
         "Signs of shock; the heart cannot fill properly."
       ],
@@ -820,6 +830,7 @@ window.WFA_DEFAULT_DATA = {
       id: "cardiac-contusion",
       name: "Cardiac Contusion",
       category: "Heart / Cardiac",
+      inferred: ["management"],
       signs: [
         "Chest pain.",
         "Shortness of breath.",
@@ -1175,6 +1186,7 @@ window.WFA_DEFAULT_DATA = {
       id: "frost-nip",
       name: "Frost Nip",
       category: "Environmental - Cold",
+      inferred: ["management"],
       signs: [
         "Superficial, non-freezing injury of exposed skin."
       ],
@@ -1275,6 +1287,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-cramps",
       name: "Heat Cramps",
       category: "Environmental - Heat",
+      inferred: ["management"],
       signs: [
         "Painful muscle spasms during or after intense activity, usually in the legs or abdominal muscles."
       ],
@@ -1289,6 +1302,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-syncope",
       name: "Heat Syncope",
       category: "Environmental - Heat",
+      inferred: ["management"],
       signs: [
         "Momentary loss of consciousness because of heat exposure."
       ],

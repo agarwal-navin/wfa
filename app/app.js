@@ -294,14 +294,13 @@
     return el("button", { class: "detail-back", onclick: closeDetail }, ["‹ " + (label || "Back")]);
   }
 
-  function sectionCard(cls, title, items) {
+  function sectionCard(cls, title, items, inferred) {
     if (!items || !items.length) return null;
     var ul = el("ul", {});
     items.forEach(function (it) { ul.appendChild(el("li", { text: it })); });
-    return el("div", { class: "section" }, [
-      el("div", { class: "section-head " + cls, text: title }),
-      ul
-    ]);
+    var head = el("div", { class: "section-head " + cls, text: title });
+    if (inferred) head.appendChild(el("span", { class: "inferred-badge", text: "inferred" }));
+    return el("div", { class: "section" }, [head, ul]);
   }
 
   // Builds an SVG "assessment pyramid" from a list of tier labels (top -> bottom).
@@ -386,10 +385,17 @@
     frag.appendChild(el("h2", { class: "detail-title", text: inj.name }));
     frag.appendChild(el("span", { class: "badge", text: inj.category || "Uncategorized" }));
 
-    var s = sectionCard("signs", "Signs & Symptoms", inj.signs);
-    var m = sectionCard("management", "Management / Treatment", inj.management);
+    var inferred = inj.inferred || [];
+    var s = sectionCard("signs", "Signs & Symptoms", inj.signs, inferred.indexOf("signs") !== -1);
+    var m = sectionCard("management", "Management / Treatment", inj.management, inferred.indexOf("management") !== -1);
     var n = sectionCard("notes", "Notes", inj.notes);
     [s, m, n].forEach(function (c) { if (c) frag.appendChild(c); });
+
+    if (inferred.length) {
+      frag.appendChild(el("div", { class: "inferred-note" }, [
+        "Sections marked \u201Cinferred\u201D are general wilderness first-aid guidance added to fill gaps in the original notes - not transcribed from them, and to be verified or replaced."
+      ]));
+    }
 
     if (state.editMode) {
       frag.appendChild(el("button", {

@@ -1,7 +1,7 @@
 /* Service worker for the whole site (landing page + app).
    Served from the site root so its scope covers both "./" (landing) and
    "./app/" (the guide), letting everything work fully offline once loaded. */
-var CACHE = "wfa-cache-v24";
+var CACHE = "wfa-cache-v26";
 var ASSETS = [
     "./",
     "./index.html",
@@ -12,6 +12,7 @@ var ASSETS = [
     "./app/styles.css",
     "./app/app.js",
     "./app/data.js",
+    "./app/bg-landscape.svg",
     "./app/icons/icon-192.png",
     "./app/icons/icon-512.png",
     "./app/icons/apple-touch-icon.png"

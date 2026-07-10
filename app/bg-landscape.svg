@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 260" preserveAspectRatio="xMidYMax meet">
+  <!-- Distant mountains -->
+  <path d="M0,210 L150,96 L270,210 L390,80 L520,210 L650,120 L790,210 L900,92 L1000,210 L1000,260 L0,260 Z"
+    fill="#e6ecf2" />
+  <!-- Ground / horizon band -->
+  <rect x="0" y="236" width="1000" height="24" fill="#d7e5d9" />
+  <!-- Pine tree line -->
+  <g fill="#d7e5d9">
+    <path d="M70,185 L44,240 L96,240 Z" />
+    <path d="M175,170 L147,240 L203,240 Z" />
+    <path d="M300,188 L276,240 L324,240 Z" />
+    <path d="M420,172 L392,240 L448,240 Z" />
+    <path d="M545,190 L521,240 L569,240 Z" />
+    <path d="M670,168 L640,240 L700,240 Z" />
+    <path d="M800,186 L776,240 L824,240 Z" />
+    <path d="M915,178 L889,240 L941,240 Z" />
+  </g>
+</svg>

@@ -20,6 +20,8 @@
   var searchClear = document.getElementById("search-clear");
   var editToggle = document.getElementById("edit-toggle");
   var dataToggle = document.getElementById("data-toggle");
+  var menuToggle = document.getElementById("menu-toggle");
+  var menu = document.getElementById("menu");
   var editModeBar = document.getElementById("edit-mode-bar");
   var editDone = document.getElementById("edit-done");
   var toastEl = document.getElementById("toast");
@@ -118,7 +120,7 @@
   function render() {
     // header edit button reflects mode
     editToggle.setAttribute("aria-pressed", state.editMode ? "true" : "false");
-    editToggle.textContent = state.editMode ? "Done" : "Edit";
+    editToggle.textContent = state.editMode ? "Done editing" : "Edit content";
     editModeBar.hidden = !state.editMode;
 
     document.querySelectorAll(".tab").forEach(function (t) {
@@ -885,6 +887,22 @@
     searchClear.hidden = true;
     window.scrollTo(0, 0);
     render();
+  });
+
+  // ---- Burger menu ---------------------------------------------------------
+  function closeMenu() {
+    menu.hidden = true;
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+  menuToggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var willOpen = menu.hidden;
+    menu.hidden = !willOpen;
+    menuToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  });
+  menu.addEventListener("click", function () { closeMenu(); });
+  document.addEventListener("click", function (e) {
+    if (!menu.hidden && !menu.contains(e.target) && e.target !== menuToggle) closeMenu();
   });
 
   // ---- Service worker (only helps when served over http/https) -------------

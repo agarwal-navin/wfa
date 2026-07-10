@@ -23,8 +23,14 @@
         <h1 id="app-title">Wilderness First Aid</h1>
       </a>
       <div class="header-actions">
-        <button id="data-toggle" class="icon-btn" title="Data & backup" aria-label="Data & backup">Data</button>
-        <button id="edit-toggle" class="icon-btn" title="Edit mode" aria-pressed="false">Edit</button>
+        <button id="menu-toggle" class="icon-btn menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Menu"
+          title="Menu">☰</button>
+        <div id="menu" class="menu" role="menu" hidden>
+          <a class="menu-item" role="menuitem" href="../index.html">About / Home</a>
+          <button id="edit-toggle" class="menu-item" role="menuitem" aria-pressed="false">Edit content</button>
+          <a class="menu-item" role="menuitem" href="../install.html">Install &amp; use offline</a>
+          <button id="data-toggle" class="menu-item" role="menuitem">Data &amp; backup</button>
+        </div>
       </div>
     </div>
     <div class="search-wrap">

@@ -73,6 +73,52 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  position: relative;
+}
+
+.menu-btn {
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 6px 12px;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  padding: 6px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 11px 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu-item:hover,
+.menu-item:active {
+  background: #f1f5f9;
 }
 
 .app-header h1 {
@@ -241,6 +287,7 @@ body {
   padding: 3px;
   margin: 0 0 14px;
 }
+
 .seg button {
   border: none;
   background: none;
@@ -251,6 +298,7 @@ body {
   border-radius: 999px;
   cursor: pointer;
 }
+
 .seg button.active {
   background: var(--teal);
   color: #fff;

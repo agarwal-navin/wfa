@@ -3,18 +3,145 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=./app/index.html" />
-    <link rel="canonical" href="./app/index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#a91b1b" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="WFA" />
     <title>Wilderness First Aid</title>
-    <script>
-        // Redirect to the app. Using replace() so this page isn't left in history.
-        location.replace("./app/index.html");
-    </script>
+    <link rel="canonical" href="./app/index.html" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./app/icons/icon-192.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./app/icons/apple-touch-icon.png" />
+    <style>
+        :root {
+            --red: #a91b1b;
+            --red-dark: #7f1d1d;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #0f172a;
+            background: linear-gradient(160deg, #fee2e2 0%, #f8fafc 46%);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 22px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 34px 24px 26px;
+        }
+
+        .logo {
+            width: 118px;
+            height: 118px;
+            border-radius: 26px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin: 18px 0 6px;
+            font-weight: 700;
+        }
+
+        .tag {
+            color: #64748b;
+            font-size: 0.98rem;
+            line-height: 1.5;
+            margin: 0 0 22px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background: var(--red);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+            border-radius: 14px;
+            box-shadow: 0 2px 6px rgba(169, 27, 27, 0.35);
+        }
+
+        .btn:active {
+            background: var(--red-dark);
+        }
+
+        .link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--red-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .note {
+            margin: 18px 0 0;
+            font-size: 0.82rem;
+            color: #64748b;
+            line-height: 1.55;
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 12px 14px;
+        }
+
+        .foot {
+            margin: 14px 0 0;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 
 <body>
-    <p>Redirecting to <a href="./app/index.html">Wilderness First Aid</a>&hellip;</p>
+    <main class="card">
+        <img class="logo" src="./app/icons/icon-512.png" alt="Wilderness First Aid logo" />
+        <h1>Wilderness First Aid</h1>
+        <p class="tag">A quick, offline field reference for patient assessment, injuries &amp; treatments, and key
+            first-aid concepts.</p>
+        <a class="btn" href="./app/index.html">Open the guide &rarr;</a>
+        <a class="link" href="./install.html">📲 How to install &amp; use offline</a>
+        <p class="note">This is a <strong>personal project</strong> I built from my own wilderness first-aid learning.
+            It is <strong>not</strong> professional or medical advice, and may contain mistakes.</p>
+        <p class="foot">Works offline once loaded &middot; In a real emergency, call for professional help.</p>
+    </main>
+
+    <script>
+        // Register the site-wide service worker so the landing page and app work offline.
+        if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker.register("./sw.js").catch(function () { });
+            });
+        }
+    </script>
 </body>
 
 </html>

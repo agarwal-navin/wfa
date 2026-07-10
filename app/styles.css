@@ -52,6 +52,23 @@ body {
   gap: 10px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  flex: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -59,7 +76,7 @@ body {
 }
 
 .app-header h1 {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   margin: 0 0 8px;
   font-weight: 700;
 }
@@ -207,6 +224,36 @@ body {
   color: var(--muted);
   font-weight: 400;
   font-size: 0.82rem;
+}
+
+.row-stack {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Segmented toggle (e.g. injuries: By category / A-Z) */
+.seg {
+  display: inline-flex;
+  background: #eef2f6;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  margin: 0 0 14px;
+}
+.seg button {
+  border: none;
+  background: none;
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.seg button.active {
+  background: var(--teal);
+  color: #fff;
 }
 
 /* Detail */
@@ -447,12 +494,24 @@ mark {
   font-weight: 700;
   box-shadow: var(--shadow);
 }
-.edit-mode-bar[hidden] { display: none; }
-.edit-mode-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+
+.edit-mode-bar[hidden] {
+  display: none;
 }
+
+.edit-mode-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.edit-mode-sub {
+  font-weight: 500;
+  font-size: 0.76rem;
+  opacity: 0.92;
+}
+
 .edit-bar-btn {
   flex: none;
   background: #fff;
@@ -465,7 +524,10 @@ mark {
   min-height: 36px;
   cursor: pointer;
 }
-.edit-bar-btn:active { background: #fde68a; }
+
+.edit-bar-btn:active {
+  background: #fde68a;
+}
 
 .data-block {
   margin-bottom: 22px;

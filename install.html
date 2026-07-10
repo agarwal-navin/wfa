@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#a91b1b" />
+    <title>Install &amp; Offline · Wilderness First Aid</title>
+    <link rel="icon" href="./app/icons/icon-192.png" type="image/png" />
+    <style>
+        :root {
+            --red: #a91b1b;
+            --red-dark: #7f1d1d;
+            --red-tint: #fee2e2;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            margin: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #0f172a;
+            background: #f8fafc;
+            line-height: 1.5;
+            padding: 0 0 40px;
+        }
+
+        header {
+            background: var(--red);
+            color: #fff;
+            padding: calc(env(safe-area-inset-top) + 16px) 20px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        header img {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+        }
+
+        header a {
+            display: inline-flex;
+        }
+
+        header h1 {
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        main {
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .back {
+            display: inline-block;
+            margin: 4px 0 18px;
+            color: var(--red-dark);
+            background: var(--red-tint);
+            border: 1px solid var(--red);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        section {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+            padding: 18px 20px;
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            margin: 0 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        ol,
+        ul {
+            margin: 8px 0 0;
+            padding-left: 22px;
+        }
+
+        li {
+            margin: 0 0 8px;
+        }
+
+        .tip {
+            background: var(--red-tint);
+            border-radius: 10px;
+            padding: 12px 14px;
+            font-size: 0.92rem;
+            margin-top: 12px;
+        }
+
+        code {
+            background: #f1f5f9;
+            border-radius: 5px;
+            padding: 1px 6px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="./index.html" aria-label="Back to home">
+            <img src="./app/icons/icon-192.png" alt="Wilderness First Aid home" />
+        </a>
+        <h1>Install &amp; use offline</h1>
+    </header>
+
+    <main>
+        <a class="back" href="./index.html">&lsaquo; Back</a>
+
+        <section>
+            <h2>📱 iPhone / iPad (Safari)</h2>
+            <ol>
+                <li>Open this site in <strong>Safari</strong> (Add to Home Screen isn't available in other browsers on
+                    iOS).</li>
+                <li>Tap the <strong>Share</strong> button (the square with an up arrow).</li>
+                <li>Scroll down and tap <strong>Add to Home Screen</strong>.</li>
+                <li>Tap <strong>Add</strong>. The Wilderness First Aid icon appears on your home screen.</li>
+                <li>Open it from that icon - it runs full-screen like an app.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>🤖 Android (Chrome)</h2>
+            <ol>
+                <li>Open this site in <strong>Chrome</strong>.</li>
+                <li>Tap the <strong>⋮</strong> menu (top-right).</li>
+                <li>Tap <strong>Install app</strong> (or <strong>Add to Home screen</strong>).</li>
+                <li>Confirm with <strong>Install</strong>. The icon is added to your home screen / app drawer.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>📶 Make sure it works offline</h2>
+            <p>The app saves itself to your device the first time it loads, so it can run with no signal (great for the
+                backcountry). To be sure it's cached:</p>
+            <ol>
+                <li><strong>Install it</strong> using the steps above.</li>
+                <li>Open the app <strong>while you still have internet</strong>.</li>
+                <li>Tap <strong>Open the guide</strong> and browse a few screens (Assessment, Injuries, Glossary) so
+                    everything downloads.</li>
+                <li>Give it a few seconds, then fully close the app.</li>
+                <li>Test it: turn on <strong>Airplane Mode</strong> and reopen - it should load normally.</li>
+            </ol>
+            <div class="tip">
+                <strong>Tip:</strong> After an update, open the app once with internet and reload so the newest version
+                is cached. If something looks stale, close and reopen it.
+            </div>
+        </section>
+
+        <a class="back" href="./app/index.html">Open the guide &rarr;</a>
+    </main>
+</body>
+
+</html>

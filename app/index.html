@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="WFA" />
   <title>Wilderness First Aid</title>
-  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="manifest" href="../manifest.webmanifest" />
   <link rel="icon" href="icons/icon-192.png" type="image/png" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
   <link rel="stylesheet" href="styles.css" />
@@ -18,7 +18,10 @@
 <body>
   <header class="app-header">
     <div class="header-row">
-      <h1 id="app-title">Wilderness First Aid</h1>
+      <a class="brand" href="../index.html" title="About this app">
+        <img class="brand-icon" src="icons/icon-192.png" alt="" />
+        <h1 id="app-title">Wilderness First Aid</h1>
+      </a>
       <div class="header-actions">
         <button id="data-toggle" class="icon-btn" title="Data & backup" aria-label="Data & backup">Data</button>
         <button id="edit-toggle" class="icon-btn" title="Edit mode" aria-pressed="false">Edit</button>
@@ -38,7 +41,10 @@
   </nav>
 
   <div id="edit-mode-bar" class="edit-mode-bar" hidden>
-    <span class="edit-mode-label">✎ Edit mode — tap an item to edit</span>
+    <span class="edit-mode-label">
+      <span class="edit-mode-title">✎ Edit mode - tap an item to edit</span>
+      <span class="edit-mode-sub">Saved on this device only - cleared if you clear your browser data</span>
+    </span>
     <button id="edit-done" class="edit-bar-btn">Done</button>
   </div>
 

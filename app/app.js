@@ -1,4 +1,4 @@
-/* Wilderness First Aid — offline app logic. No frameworks, no network. */
+/* Wilderness First Aid - offline app logic. No frameworks, no network. */
 (function () {
   "use strict";
 
@@ -11,6 +11,7 @@
     detail: null, // { type: 'injury'|'assessment', id }
     editing: false,
     editMode: false,
+    injuryView: "category", // 'category' | 'az'
     query: ""
   };
 
@@ -146,6 +147,30 @@
       }, ["+ Add injury / trauma"]));
     }
 
+    frag.appendChild(injuryViewToggle());
+
+    if (state.injuryView === "az") renderInjuriesAZ(frag);
+    else renderInjuriesByCategory(frag);
+
+    view.appendChild(frag);
+  }
+
+  function injuryViewToggle() {
+    function segBtn(label, mode) {
+      return el("button", {
+        class: state.injuryView === mode ? "active" : "",
+        onclick: function () {
+          if (state.injuryView !== mode) { state.injuryView = mode; render(); }
+        }
+      }, [label]);
+    }
+    return el("div", { class: "seg" }, [
+      segBtn("By category", "category"),
+      segBtn("A-Z", "az")
+    ]);
+  }
+
+  function renderInjuriesByCategory(frag) {
     var byCat = {};
     var order = state.data.categories.slice();
     state.data.injuries.forEach(function (inj) {
@@ -154,6 +179,8 @@
       byCat[c].push(inj);
       if (order.indexOf(c) === -1) order.push(c);
     });
+
+    order.sort(function (a, b) { return a.localeCompare(b); });
 
     order.forEach(function (cat) {
       var list = byCat[cat];
@@ -168,17 +195,35 @@
       group.appendChild(listWrap);
       frag.appendChild(group);
     });
-
-    view.appendChild(frag);
   }
 
-  function injuryRow(inj) {
+  function renderInjuriesAZ(frag) {
+    var list = state.data.injuries.slice().sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+    var listWrap = el("div", { class: "list" });
+    list.forEach(function (inj) {
+      listWrap.appendChild(injuryRow(inj, true));
+    });
+    frag.appendChild(listWrap);
+  }
+
+  function injuryRow(inj, showCategory) {
+    var label;
+    if (showCategory) {
+      label = el("span", { class: "row-stack" }, [
+        el("span", {}, [inj.name]),
+        el("span", { class: "row-sub", text: inj.category || "Uncategorized" })
+      ]);
+    } else {
+      label = el("span", {}, [inj.name]);
+    }
     return el("div", { class: "card" }, [
       el("button", {
         class: "row-btn",
         onclick: function () { openDetail("injury", inj.id); }
       }, [
-        el("span", {}, [inj.name]),
+        label,
         el("span", { class: "chev" }, ["›"])
       ])
     ]);
@@ -199,7 +244,12 @@
     var frag = document.createDocumentFragment();
     frag.appendChild(el("div", { class: "category-title", text: meta.listTitle }));
     var listWrap = el("div", { class: "list" });
-    (topicCollection(type) || []).forEach(function (topic) {
+    var topics = (topicCollection(type) || []).slice();
+    // Glossary is browsed by name, so sort A-Z. Assessments keep their logical order.
+    if (type === "concept") {
+      topics.sort(function (a, b) { return a.title.localeCompare(b.title); });
+    }
+    topics.forEach(function (topic) {
       listWrap.appendChild(el("div", { class: "card" }, [
         el("button", {
           class: "row-btn",
@@ -400,7 +450,7 @@
         (inj.category || "").toLowerCase().indexOf(ql) !== -1;
     });
 
-    // 2. Injuries by sign/symptom (and management/notes) — with the matching line
+    // 2. Injuries by sign/symptom (and management/notes) - with the matching line
     var symptomMatches = [];
     state.data.injuries.forEach(function (inj) {
       if (nameMatches.indexOf(inj) !== -1) return;
@@ -840,7 +890,7 @@
   // ---- Service worker (only helps when served over http/https) -------------
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
     window.addEventListener("load", function () {
-      navigator.serviceWorker.register("sw.js").catch(function () { });
+      navigator.serviceWorker.register("../sw.js").catch(function () { });
     });
   }
 

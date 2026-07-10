@@ -1,5 +1,5 @@
 /**
- * Wilderness First Aid — default content.
+ * Wilderness First Aid - default content.
  *
  * This is the built-in reference data transcribed from the course notes.
  * The app loads this as the default. Any edits you make in the app are stored
@@ -13,7 +13,7 @@ window.WFA_DEFAULT_DATA = {
   },
 
   // ---------------------------------------------------------------------------
-  // PATIENT ASSESSMENT — step-by-step reference (searchable free text)
+  // PATIENT ASSESSMENT - step-by-step reference (searchable free text)
   // ---------------------------------------------------------------------------
   assessments: [
     {
@@ -51,43 +51,43 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "STERI",
           items: [
-            "S — Safety",
-            "T — Terrain",
-            "E — Environment",
-            "R — Resources",
-            "I — Impression"
+            "S - Safety",
+            "T - Terrain",
+            "E - Environment",
+            "R - Resources",
+            "I - Impression"
           ]
         },
         {
-          heading: "S — Safety",
+          heading: "S - Safety",
           items: [
             "Is the scene safe for you, the patient & bystanders?",
-            "Scan for hazards — rockfall, traffic, wildlife, water, weather, unstable ground — before approaching."
+            "Scan for hazards - rockfall, traffic, wildlife, water, weather, unstable ground - before approaching."
           ]
         },
         {
-          heading: "T — Terrain",
+          heading: "T - Terrain",
           items: [
             "Note the ground & access: steep, loose, wet or exposed terrain.",
             "It affects how you reach, treat & evacuate the patient."
           ]
         },
         {
-          heading: "E — Environment",
+          heading: "E - Environment",
           items: [
-            "Weather & conditions — heat, cold, rain, wind, altitude — that threaten patient & rescuers.",
+            "Weather & conditions - heat, cold, rain, wind, altitude - that threaten patient & rescuers.",
             "Plan protection from the elements early."
           ]
         },
         {
-          heading: "R — Resources",
+          heading: "R - Resources",
           items: [
             "What & who do you have: people, gear, first-aid supplies, communication & evacuation options?",
             "Call for additional help early if you may need it."
           ]
         },
         {
-          heading: "I — Impression",
+          heading: "I - Impression",
           items: [
             "Form a general impression: Mechanism of Injury (MOI) or Nature of Illness (NOI).",
             "Count the number of patients & gauge overall severity."
@@ -103,11 +103,11 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "ABCDE",
           items: [
-            "A — Airway",
-            "B — Breathing",
-            "C — Circulation",
-            "D — Disability",
-            "E — Environment"
+            "A - Airway",
+            "B - Breathing",
+            "C - Circulation",
+            "D - Disability",
+            "E - Environment"
           ]
         },
         {
@@ -119,7 +119,7 @@ window.WFA_DEFAULT_DATA = {
           ]
         },
         {
-          heading: "A — Airway",
+          heading: "A - Airway",
           items: [
             "Assess for & correct any airway issues.",
             "Open the mouth & tilt the head slightly up.",
@@ -128,26 +128,26 @@ window.WFA_DEFAULT_DATA = {
           ]
         },
         {
-          heading: "B — Breathing",
+          heading: "B - Breathing",
           items: [
             "Assess for & correct any breathing issues.",
             "Ask if they have problems breathing or shortness of breath."
           ]
         },
         {
-          heading: "C — Circulation",
+          heading: "C - Circulation",
           items: [
             "Perform a blood sweep to find & stop bleeding."
           ]
         },
         {
-          heading: "D — Disability",
+          heading: "D - Disability",
           items: [
             "Screen for brain dysfunction, spinal injury or injured limb function."
           ]
         },
         {
-          heading: "E — Environment",
+          heading: "E - Environment",
           items: [
             "Isolate the patient from the environment.",
             "Insulation between patient & the ground."
@@ -163,50 +163,50 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "SAMPLE",
           items: [
-            "S — Signs & Symptoms",
-            "A — Allergies",
-            "M — Medications",
-            "P — Past or Present Medical Problems",
-            "L — Last In's and Out's",
-            "E — Events leading up to current complaint/problem"
+            "S - Signs & Symptoms",
+            "A - Allergies",
+            "M - Medications",
+            "P - Past or Present Medical Problems",
+            "L - Last In's and Out's",
+            "E - Events leading up to current complaint/problem"
           ]
         },
         {
-          heading: "S — Signs & Symptoms",
+          heading: "S - Signs & Symptoms",
           items: [
-            "Symptoms felt by patient — pain, nausea, dizziness, etc.",
-            "Signs observed or measured — pale skin, blood pressure, fever, etc."
+            "Symptoms felt by patient - pain, nausea, dizziness, etc.",
+            "Signs observed or measured - pale skin, blood pressure, fever, etc."
           ]
         },
         {
-          heading: "A — Allergies",
+          heading: "A - Allergies",
           items: [
             "Drugs, food & other allergies.",
             "Knowing this prevents unknowingly sending patients into anaphylactic shock."
           ]
         },
         {
-          heading: "M — Medications",
+          heading: "M - Medications",
           items: [
             "Insight into ongoing medical problems & current state of health."
           ]
         },
         {
-          heading: "P — Past/Present Medical Problems",
+          heading: "P - Past/Present Medical Problems",
           items: [
             "May be directly related to the complaint or may adjust treatment/evacuation decision.",
-            "Ex — Diabetic patients have higher probability of wound infections, frostbite, hypothermia & dehydration."
+            "Ex - Diabetic patients have higher probability of wound infections, frostbite, hypothermia & dehydration."
           ]
         },
         {
-          heading: "L — Last In's and Out's",
+          heading: "L - Last In's and Out's",
           items: [
             "Last time patient ate or drank & last urination & bowel movement.",
             "When did you last eat or drink? When did you last use the bathroom? Was anything abnormal?"
           ]
         },
         {
-          heading: "E — Events",
+          heading: "E - Events",
           items: [
             "Asking the patient to clarify in detail can reveal missed info & other concerns.",
             "Falls are a great example: did the patient fall because they tripped or because they fainted?",
@@ -223,49 +223,49 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "OPQRST",
           items: [
-            "O — Onset",
-            "P — Provocation / Palliation",
-            "Q — Quality",
-            "R — Radiation",
-            "S — Severity",
-            "T — Time"
+            "O - Onset",
+            "P - Provocation / Palliation",
+            "Q - Quality",
+            "R - Radiation",
+            "S - Severity",
+            "T - Time"
           ]
         },
         {
-          heading: "O — Onset",
+          heading: "O - Onset",
           items: [
             "What were you doing when the pain started?",
             "Did it come on suddenly or gradually?"
           ]
         },
         {
-          heading: "P — Provocation / Palliation",
+          heading: "P - Provocation / Palliation",
           items: [
-            "What makes the pain worse or better — movement, rest, pressure, position?"
+            "What makes the pain worse or better - movement, rest, pressure, position?"
           ]
         },
         {
-          heading: "Q — Quality",
+          heading: "Q - Quality",
           items: [
-            "How does it feel — sharp, dull, burning, crushing, cramping?",
+            "How does it feel - sharp, dull, burning, crushing, cramping?",
             "Let the patient describe it in their own words."
           ]
         },
         {
-          heading: "R — Radiation",
+          heading: "R - Radiation",
           items: [
             "Does the pain stay in one place or move / spread anywhere else?"
           ]
         },
         {
-          heading: "S — Severity",
+          heading: "S - Severity",
           items: [
             "Rate the pain 0–10 & note how much it limits activity.",
             "Recheck over time to see if it's improving or worsening."
           ]
         },
         {
-          heading: "T — Time",
+          heading: "T - Time",
           items: [
             "When did it start & how has it changed since?",
             "Is it constant, or does it come & go?"
@@ -281,32 +281,32 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "AVPU",
           items: [
-            "A — Alert & Oriented",
-            "V — Verbal",
-            "P — Pain",
-            "U — Unresponsive"
+            "A - Alert & Oriented",
+            "V - Verbal",
+            "P - Pain",
+            "U - Unresponsive"
           ]
         },
         {
-          heading: "A — Alert & Oriented",
+          heading: "A - Alert & Oriented",
           items: [
             "Alert & Oriented (A&O). A&O x4: Place (where), Person (who), Time (relative idea), Event (what happened)."
           ]
         },
         {
-          heading: "V — Verbal",
+          heading: "V - Verbal",
           items: [
             "Is the patient responding in any way to verbal stimuli?"
           ]
         },
         {
-          heading: "P — Pain",
+          heading: "P - Pain",
           items: [
             "Patients not responding to verbal stimuli may respond to painful stimuli (a small pinch, not extreme)."
           ]
         },
         {
-          heading: "U — Unresponsive",
+          heading: "U - Unresponsive",
           items: [
             "No response to verbal or painful stimuli."
           ]
@@ -344,7 +344,7 @@ window.WFA_DEFAULT_DATA = {
   ],
 
   // ---------------------------------------------------------------------------
-  // KEY CONCEPTS — foundational terms & measurements
+  // KEY CONCEPTS - foundational terms & measurements
   // ---------------------------------------------------------------------------
   concepts: [
     {
@@ -370,7 +370,7 @@ window.WFA_DEFAULT_DATA = {
           heading: "Shock",
           items: [
             "Shock is inadequate perfusion.",
-            "It doesn't occur spontaneously — it is always secondary to its cause, so treat the cause."
+            "It doesn't occur spontaneously - it is always secondary to its cause, so treat the cause."
           ]
         }
       ]
@@ -389,9 +389,9 @@ window.WFA_DEFAULT_DATA = {
         {
           heading: "Types of bleeds",
           items: [
-            "Capillary — slow oozing from small vessels; usually easy to control.",
-            "Venous — steady, darker red flow.",
-            "Arterial — bright red & spurting with the pulse; the most serious."
+            "Capillary - slow oozing from small vessels; usually easy to control.",
+            "Venous - steady, darker red flow.",
+            "Arterial - bright red & spurting with the pulse; the most serious."
           ]
         }
       ]
@@ -491,9 +491,9 @@ window.WFA_DEFAULT_DATA = {
     "Allergic",
     "Respiratory",
     "Diabetic / Metabolic",
-    "Environmental — Cold",
-    "Environmental — Heat",
-    "Environmental — Altitude"
+    "Environmental - Cold",
+    "Environmental - Heat",
+    "Environmental - Altitude"
   ],
 
   // ---------------------------------------------------------------------------
@@ -505,7 +505,7 @@ window.WFA_DEFAULT_DATA = {
       name: "Shock",
       category: "Circulation & Shock",
       signs: [
-        "Inadequate perfusion — signs depend on the underlying cause.",
+        "Inadequate perfusion - signs depend on the underlying cause.",
         "May accompany bleeding, trauma, spinal injury (neurogenic), or sepsis (septic)."
       ],
       management: [
@@ -514,7 +514,7 @@ window.WFA_DEFAULT_DATA = {
         "Evacuate."
       ],
       notes: [
-        "Shock is inadequate perfusion. It does not occur spontaneously — it is always secondary to its cause.",
+        "Shock is inadequate perfusion. It does not occur spontaneously - it is always secondary to its cause.",
         "Perfusion = oxygen & vital nutrients reaching the body's cells."
       ]
     },
@@ -548,7 +548,7 @@ window.WFA_DEFAULT_DATA = {
         "Loss of bladder and/or bowel control.",
         "Midline neck or back pain directly over the spine.",
         "Deformities of the spine.",
-        "Difficulty maintaining body temperature — if severe enough can lead to neurogenic shock."
+        "Difficulty maintaining body temperature - if severe enough can lead to neurogenic shock."
       ],
       management: [
         "If there is a Mechanism Of Injury (MOI) that may cause spinal injury, spinal motion restriction (SMR) may be needed.",
@@ -572,13 +572,13 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "1. Airway & Breathing.",
         "2. Circulation.",
-        "3. Temperature — prevent from getting too hot or too cold.",
-        "4. Packaging — don't use hard back boards or stiff neck collars.",
-        "5. Positioning — keep head slightly raised but inline with body to reduce swelling.",
-        "6. Monitor closely — pupils, breathing & level of response."
+        "3. Temperature - prevent from getting too hot or too cold.",
+        "4. Packaging - don't use hard back boards or stiff neck collars.",
+        "5. Positioning - keep head slightly raised but inline with body to reduce swelling.",
+        "6. Monitor closely - pupils, breathing & level of response."
       ],
       notes: [
-        "Concussion is a mild brain injury — it happens when the brain doesn't work normally after a trauma.",
+        "Concussion is a mild brain injury - it happens when the brain doesn't work normally after a trauma.",
         "Evaluation: (1) rule out severe structural brain injury, (2) check for concussion signs, (3) continue to monitor & assess."
       ]
     },
@@ -588,12 +588,12 @@ window.WFA_DEFAULT_DATA = {
       category: "Musculoskeletal",
       signs: [
         "Assessed with CMS = Circulation, Movement & Sensation.",
-        "Circulation: pale, blue, purple or black skin, or swollen areas — bad! No pulse below the injury — bad!",
+        "Circulation: pale, blue, purple or black skin, or swollen areas - bad! No pulse below the injury - bad!",
         "Movement & Sensation: cannot wriggle toes/fingers; cannot feel a pinch on top of fingers/toes (possible nerve damage); numbness or tingling at/below the injury (possible nerve or circulation damage)."
       ],
       management: [
         "Assess CMS before & after splinting and throughout care.",
-        "Splint — Sling & Swathe: knot in the middle corner of a triangle bandage, place the knot behind the elbow to create a pocket for the arm, knot the two loose ends around neck & shoulder, apply a swathe around the chest to stabilize (not too tight).",
+        "Splint - Sling & Swathe: knot in the middle corner of a triangle bandage, place the knot behind the elbow to create a pocket for the arm, knot the two loose ends around neck & shoulder, apply a swathe around the chest to stabilize (not too tight).",
         "If CMS problems, evacuate!",
         "Ask the patient to report any later numbness, tingling or increase in pain."
       ],
@@ -635,7 +635,7 @@ window.WFA_DEFAULT_DATA = {
       ],
       management: [
         "Treat the source infection, support ABCs.",
-        "Evacuate — can progress to septic shock."
+        "Evacuate - can progress to septic shock."
       ],
       notes: [
         "Sepsis: a serious condition where the body responds improperly to an infection; the infection-fighting process turns on the body, causing organs to work poorly.",
@@ -651,7 +651,7 @@ window.WFA_DEFAULT_DATA = {
       ],
       management: [
         "Rinsing or submerging can help with pain & stop the burning process. DO NOT do this for more than 10 mins.",
-        "Burn gels initially for minor, superficial or partial thickness burns — NOT for large partial or full thickness burns (can promote infection & cause skin damage).",
+        "Burn gels initially for minor, superficial or partial thickness burns - NOT for large partial or full thickness burns (can promote infection & cause skin damage).",
         "Dress the burn site with clean, dry gauze.",
         "Manage pain with OTC drugs."
       ],
@@ -670,12 +670,12 @@ window.WFA_DEFAULT_DATA = {
         "Blood in urine."
       ],
       management: [
-        "Can't do much — cannot stop internal bleeding.",
+        "Can't do much - cannot stop internal bleeding.",
         "Monitor ABC.",
         "Evacuate immediately."
       ],
       notes: [
-        "Quadrants: RUQ — liver, gall bladder, part of pancreas. LUQ — stomach, spleen, rest of pancreas. RLQ — small & large intestines, appendix. LLQ — small & large intestines. Kidneys sit behind the other organs; urinary bladder below the quadrants."
+        "Quadrants: RUQ - liver, gall bladder, part of pancreas. LUQ - stomach, spleen, rest of pancreas. RLQ - small & large intestines, appendix. LLQ - small & large intestines. Kidneys sit behind the other organs; urinary bladder below the quadrants."
       ]
     },
     {
@@ -701,7 +701,7 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "NEVER push abdominal organs back into the body.",
         "Keep the organs moist.",
-        "Cover with an airtight, occlusive dressing — trash bags are ideal."
+        "Cover with an airtight, occlusive dressing - trash bags are ideal."
       ],
       notes: []
     },
@@ -714,7 +714,7 @@ window.WFA_DEFAULT_DATA = {
         "Lips or fingers turning blue."
       ],
       management: [
-        "Apply bulky padding — a bunched-up t-shirt, rolls of gauze, etc.",
+        "Apply bulky padding - a bunched-up t-shirt, rolls of gauze, etc.",
         "Lay the patient down on the side of injury.",
         "Evacuate."
       ],
@@ -763,7 +763,7 @@ window.WFA_DEFAULT_DATA = {
         "Compromised ABCs."
       ],
       management: [
-        "Rapid evacuation — this is life threatening."
+        "Rapid evacuation - this is life threatening."
       ],
       notes: [
         "A pneumothorax can progress to a tension pneumothorax. The collapsed lung pushes onto the heart, blood vessels & the other lung, compromising ABC."
@@ -846,7 +846,7 @@ window.WFA_DEFAULT_DATA = {
         "Vomiting and diarrhea."
       ],
       management: [
-        "Administration of Epinephrine — into muscle ASAP, especially if there is tightening/swelling of the airway, or signs of shock (feeling faint or lightheaded).",
+        "Administration of Epinephrine - into muscle ASAP, especially if there is tightening/swelling of the airway, or signs of shock (feeling faint or lightheaded).",
         "Removal of the allergen, if possible.",
         "Monitor ABCs.",
         "Evacuate."
@@ -878,8 +878,8 @@ window.WFA_DEFAULT_DATA = {
       category: "Respiratory",
       signs: [
         "Fever.",
-        "Productive cough — brings up mucus or phlegm.",
-        "Exertional dyspnea — shortness of breath.",
+        "Productive cough - brings up mucus or phlegm.",
+        "Exertional dyspnea - shortness of breath.",
         "Chest discomfort.",
         "Hypoxia.",
         "Altered mental states.",
@@ -905,7 +905,7 @@ window.WFA_DEFAULT_DATA = {
         "Not wanting to eat."
       ],
       management: [
-        "Contagious — use protection such as gloves, masks, and eyeglasses.",
+        "Contagious - use protection such as gloves, masks, and eyeglasses.",
         "Evacuate."
       ],
       notes: [
@@ -929,7 +929,7 @@ window.WFA_DEFAULT_DATA = {
       ],
       notes: [
         "Asthma: sudden spasming of the bronchioles with swelling & mucus production; restricts the diameter of the airway, making it harder to breathe. Triggers: allergens, exertion, stress, cold or hot temperatures.",
-        "COPD (Chronic Obstructive Pulmonary Disorders): a group of ongoing illnesses affecting the respiratory system — asthma, chronic bronchitis, emphysema."
+        "COPD (Chronic Obstructive Pulmonary Disorders): a group of ongoing illnesses affecting the respiratory system - asthma, chronic bronchitis, emphysema."
       ]
     },
     {
@@ -1004,7 +1004,7 @@ window.WFA_DEFAULT_DATA = {
       name: "Hypoglycemia",
       category: "Diabetic / Metabolic",
       signs: [
-        "Altered mentation or behavioral changes — including appearing drunk or becoming aggressive.",
+        "Altered mentation or behavioral changes - including appearing drunk or becoming aggressive.",
         "Dizziness.",
         "Headache.",
         "Clammy skin.",
@@ -1014,8 +1014,8 @@ window.WFA_DEFAULT_DATA = {
       ],
       management: [
         "Administer sugar. If in doubt, administer sugar.",
-        "If the patient is alert, give oral glucose or sugary foods — soda, juice, sugar packets (no artificial sweeteners).",
-        "Once the patient responds positively, consider more complex sugars — sandwiches, food bars, pasta.",
+        "If the patient is alert, give oral glucose or sugary foods - soda, juice, sugar packets (no artificial sweeteners).",
+        "Once the patient responds positively, consider more complex sugars - sandwiches, food bars, pasta.",
         "If unconscious or unable to swallow, rub small amounts against the inside of the cheek.",
         "Support ABCs. Never give insulin."
       ],
@@ -1043,7 +1043,7 @@ window.WFA_DEFAULT_DATA = {
         "Evacuate."
       ],
       notes: [
-        "Slower onset over a period of days — too much sugar in the blood but not in the cells, which are being starved.",
+        "Slower onset over a period of days - too much sugar in the blood but not in the cells, which are being starved.",
         "High blood glucose can lead to Diabetic Ketoacidosis (DKA) or Hyperosmolar Hyperglycemic Nonketotic Syndrome (HHNS)."
       ]
     },
@@ -1082,7 +1082,7 @@ window.WFA_DEFAULT_DATA = {
         "Coma."
       ],
       management: [
-        "Assess with FAST — F: Facial droop (ask to smile). A: Arm drift (eyes closed, hold both arms up & out, watch for drift). S: Speech (repeat a simple sentence, listen for slurring). T: Time (when was the patient last seen acting normal? Time is tissue).",
+        "Assess with FAST - F: Facial droop (ask to smile). A: Arm drift (eyes closed, hold both arms up & out, watch for drift). S: Speech (repeat a simple sentence, listen for slurring). T: Time (when was the patient last seen acting normal? Time is tissue).",
         "Be ready to maintain the airway with ventilation as the patient deteriorates.",
         "Apply oxygen if available.",
         "Evacuate."
@@ -1115,15 +1115,15 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "hypothermia",
       name: "Hypothermia",
-      category: "Environmental — Cold",
+      category: "Environmental - Cold",
       signs: [
         "Drop in core body temperature below the normal 98.6°F (37°C).",
         "Combined with shock/trauma, it worsens shock and significantly reduces survival chances."
       ],
       management: [
-        "5-point hypowrap: (1) dry base layers, (2) internal vapor barrier — trash bag/reflective blanket, (3) insulating layer — winter-rating sleeping bag, (4) ground insulation, (5) weather barrier fully wrapped around patient — tarp, tent fly, bivy bag.",
-        "Calorie loading — warm sugary fluids & high-calorie foods.",
-        "Active rewarming — place warm (or hot) packs/bottles near the neck, armpits & groin."
+        "5-point hypowrap: (1) dry base layers, (2) internal vapor barrier - trash bag/reflective blanket, (3) insulating layer - winter-rating sleeping bag, (4) ground insulation, (5) weather barrier fully wrapped around patient - tarp, tent fly, bivy bag.",
+        "Calorie loading - warm sugary fluids & high-calorie foods.",
+        "Active rewarming - place warm (or hot) packs/bottles near the neck, armpits & groin."
       ],
       notes: [
         "Hypothermia can be fatal on its own."
@@ -1132,7 +1132,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "hyponatremia",
       name: "Hyponatremia",
-      category: "Environmental — Cold",
+      category: "Environmental - Cold",
       signs: [
         "Fatigue/weakness.",
         "Increased thirst.",
@@ -1156,7 +1156,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "immersion-foot",
       name: "Immersion Foot (Trench Foot)",
-      category: "Environmental — Cold",
+      category: "Environmental - Cold",
       signs: [
         "Foot appears wrinkled, pale in color.",
         "Sometimes skin detaches from the deeper layers of the foot."
@@ -1174,7 +1174,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "frost-nip",
       name: "Frost Nip",
-      category: "Environmental — Cold",
+      category: "Environmental - Cold",
       signs: [
         "Superficial, non-freezing injury of exposed skin."
       ],
@@ -1189,7 +1189,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "frost-bite",
       name: "Frost Bite",
-      category: "Environmental — Cold",
+      category: "Environmental - Cold",
       signs: [
         "Pale skin with few blisters.",
         "After thawing, turns red or purple; more blisters may appear.",
@@ -1199,8 +1199,8 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "Prevention is better than treatment. Prevention = Perfusion + Protection.",
         "DO NOT thaw if the likelihood of refreezing is high; wrap the injury in bulky gauze.",
-        "Active (rapid rewarming) — only if resources are available & hospital is 72 hrs away: submerge in heated water (37–39°C, up to 30 mins), maintain water temp, air dry (do not rub with a towel), wrap in clean loose gauze, splint if needed.",
-        "Passive — thaw on its own: DO NOT rupture blisters, administer Ibuprofen (12 mg/kg), apply aloe vera, elevate the injury."
+        "Active (rapid rewarming) - only if resources are available & hospital is 72 hrs away: submerge in heated water (37–39°C, up to 30 mins), maintain water temp, air dry (do not rub with a towel), wrap in clean loose gauze, splint if needed.",
+        "Passive - thaw on its own: DO NOT rupture blisters, administer Ibuprofen (12 mg/kg), apply aloe vera, elevate the injury."
       ],
       notes: [
         "Freezing of the skin & underlying tissue.",
@@ -1211,7 +1211,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "ams",
       name: "Acute Mountain Sickness (AMS)",
-      category: "Environmental — Altitude",
+      category: "Environmental - Altitude",
       signs: [
         "Headache.",
         "Fatigue.",
@@ -1232,7 +1232,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "hape",
       name: "High Altitude Pulmonary Edema (HAPE)",
-      category: "Environmental — Altitude",
+      category: "Environmental - Altitude",
       signs: [
         "Wet cough.",
         "Bloody sputum.",
@@ -1245,7 +1245,7 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "Descend at least 1000 m.",
         "Hyperbaric chamber.",
-        "Medications — Diamox, dexamethasone & nifedipine."
+        "Medications - Diamox, dexamethasone & nifedipine."
       ],
       notes: [
         "Occurs above ~12,000 ft. Fluid buildup in the lungs, decreasing the ability to respire."
@@ -1254,10 +1254,10 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "hace",
       name: "High Altitude Cerebral Edema (HACE)",
-      category: "Environmental — Altitude",
+      category: "Environmental - Altitude",
       signs: [
         "Altered mentation.",
-        "Ataxia (poor muscle control — clumsy movement, balance problems).",
+        "Ataxia (poor muscle control - clumsy movement, balance problems).",
         "Abnormal pupils.",
         "Seizures.",
         "Behavioral changes (combativeness, suspicion of others, hallucinations, unable to reason, mood swings)."
@@ -1265,7 +1265,7 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "Descend at least 1000 m.",
         "Hyperbaric chamber.",
-        "Medications — Diamox, dexamethasone & nifedipine."
+        "Medications - Diamox, dexamethasone & nifedipine."
       ],
       notes: [
         "Fluid buildup in the brain increases intracranial pressure."
@@ -1274,7 +1274,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "heat-cramps",
       name: "Heat Cramps",
-      category: "Environmental — Heat",
+      category: "Environmental - Heat",
       signs: [
         "Painful muscle spasms during or after intense activity, usually in the legs or abdominal muscles."
       ],
@@ -1288,7 +1288,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "heat-syncope",
       name: "Heat Syncope",
-      category: "Environmental — Heat",
+      category: "Environmental - Heat",
       signs: [
         "Momentary loss of consciousness because of heat exposure."
       ],
@@ -1302,7 +1302,7 @@ window.WFA_DEFAULT_DATA = {
     {
       id: "heat-exhaustion",
       name: "Heat Exhaustion",
-      category: "Environmental — Heat",
+      category: "Environmental - Heat",
       signs: [
         "Dizziness.",
         "Headache.",
@@ -1318,13 +1318,13 @@ window.WFA_DEFAULT_DATA = {
         "Cool the patient; monitor for progression to heat stroke."
       ],
       notes: [
-        "Hypovolemia from excessive sweating & electrolyte loss — loss of fluids like blood & water. This is an emergency."
+        "Hypovolemia from excessive sweating & electrolyte loss - loss of fluids like blood & water. This is an emergency."
       ]
     },
     {
       id: "heat-stroke",
       name: "Heat Stroke",
-      category: "Environmental — Heat",
+      category: "Environmental - Heat",
       signs: [
         "Body temp above 40°C.",
         "May sweat, but NO sweat is a strong indication.",
@@ -1335,7 +1335,7 @@ window.WFA_DEFAULT_DATA = {
         "Low BP & RR."
       ],
       management: [
-        "Aggressive cooling — reducing the duration of high temperature is paramount.",
+        "Aggressive cooling - reducing the duration of high temperature is paramount.",
         "Cold water submersion (CWS).",
         "If CWS is not possible, douse in water & cover in wet clothing & fan.",
         "Evacuate."

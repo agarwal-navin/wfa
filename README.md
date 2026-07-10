@@ -1,6 +1,6 @@
 # Wilderness First Aid (offline reference)
 
-A tiny, fully-offline web app of my Wilderness First Aid course notes — patient
+A tiny, fully-offline web app of my Wilderness First Aid course notes - patient
 assessment, injuries/traumas with signs & symptoms, treatment, category and
 notes, plus search. No accounts, no network, no App Store, no fees.
 
@@ -9,17 +9,17 @@ files you open in a browser.
 
 ## Features
 
-- **Patient assessment** — Size-up (STERI), Primary (ABCDE), History (SAMPLE),
+- **Patient assessment** - Size-up (STERI), Primary (ABCDE), History (SAMPLE),
   Pain (OPQRST), Vitals (AVPU), evacuation, bleeding.
-- **Injuries / traumas** — grouped by category; tap for signs & symptoms,
+- **Injuries / traumas** - grouped by category; tap for signs & symptoms,
   management/treatment, category and notes.
 - **Search everything at once:**
   - Injuries / traumas and categories by name.
   - Signs & symptoms → lists every matching injury.
   - Assessment keywords (e.g. `STERI`, `pain`, `AVPU`, `tourniquet`).
-- **Edit mode (optional)** — update signs/symptoms, treatments and notes; add
+- **Edit mode (optional)** - update signs/symptoms, treatments and notes; add
   new injuries; add new categories. Changes are saved on your device only.
-- **Backup / restore** — export and import your data as a JSON file.
+- **Backup / restore** - export and import your data as a JSON file.
 
 > This is a personal study aid, **not medical advice**. In a real emergency,
 > get professional help.
@@ -39,7 +39,7 @@ app/
 
 ## Use it on your iPhone
 
-### Option A — Install as a home-screen app (recommended)
+### Option A - Install as a home-screen app (recommended)
 
 This gives you an app icon and full offline use.
 
@@ -54,7 +54,7 @@ This gives you an app icon and full offline use.
 3. Tap the **Share** button → **Add to Home Screen**.
 4. Open it from the home screen. It now works with no internet.
 
-### Option B — Just save the files and open them (no hosting)
+### Option B - Just save the files and open them (no hosting)
 
 Everything is self-contained, so you can open it straight from local files:
 
@@ -65,7 +65,7 @@ Everything is self-contained, so you can open it straight from local files:
 Notes for Option B:
 - Keep all files in the same folder (don't separate `index.html` from `data.js`).
 - Opening via `file://` won't register the service worker, but it doesn't need
-  to — nothing loads from the network anyway.
+  to - nothing loads from the network anyway.
 
 ## Making permanent edits
 

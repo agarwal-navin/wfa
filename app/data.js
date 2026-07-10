@@ -460,6 +460,19 @@ window.WFA_DEFAULT_DATA = {
       ]
     },
     {
+      id: "hypovolemia",
+      title: "Hypovolemia",
+      keywords: ["hypovolemia", "fluid loss", "blood", "water", "sweating", "electrolyte", "dehydration"],
+      sections: [
+        {
+          heading: "Hypovolemia",
+          items: [
+            "Loss of fluids like blood & water, caused by excessive sweating & electrolyte loss."
+          ]
+        }
+      ]
+    },
+    {
       id: "respiratory-rate",
       title: "Respiratory Rate",
       keywords: ["respiratory rate", "breaths", "breathing", "rr"],
@@ -916,8 +929,7 @@ window.WFA_DEFAULT_DATA = {
         "Not wanting to eat."
       ],
       management: [
-        "Contagious - use protection such as gloves, masks, and eyeglasses.",
-        "Evacuate."
+        "Contagious - use protection such as gloves, masks, and eyeglasses."
       ],
       notes: [
         "A lung infection."
@@ -935,8 +947,7 @@ window.WFA_DEFAULT_DATA = {
       ],
       management: [
         "Inhaler or other medications; you can assist with the inhaler.",
-        "Make a plan beforehand: is it difficult to manage? Do they often return? Does it require intubation or hospitalization?",
-        "These patients may need immediate evacuation at the first signs."
+        "Make a plan beforehand."
       ],
       notes: [
         "Asthma: sudden spasming of the bronchioles with swelling & mucus production; restricts the diameter of the airway, making it harder to breathe. Triggers: allergens, exertion, stress, cold or hot temperatures.",
@@ -1011,6 +1022,18 @@ window.WFA_DEFAULT_DATA = {
       ]
     },
     {
+      id: "diabetes",
+      name: "Diabetes",
+      category: "Diabetic / Metabolic",
+      signs: [],
+      management: [],
+      notes: [
+        "Type 1 Diabetes: the pancreas fails to produce enough (or any) insulin; usually begins in childhood.",
+        "Type 2 Diabetes: develops in adulthood; caused by decreased cell response to insulin.",
+        "Normal blood glucose level: 80-120 mg/dl."
+      ]
+    },
+    {
       id: "hypoglycemia",
       name: "Hypoglycemia",
       category: "Diabetic / Metabolic",
@@ -1050,8 +1073,7 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "Support ABCs and reassess the patient.",
         "If in doubt, administer sugar.",
-        "Never give insulin.",
-        "Evacuate."
+        "Never give insulin."
       ],
       notes: [
         "Slower onset over a period of days - too much sugar in the blood but not in the cells, which are being starved.",
@@ -1095,8 +1117,7 @@ window.WFA_DEFAULT_DATA = {
       management: [
         "Assess with FAST - F: Facial droop (ask to smile). A: Arm drift (eyes closed, hold both arms up & out, watch for drift). S: Speech (repeat a simple sentence, listen for slurring). T: Time (when was the patient last seen acting normal? Time is tissue).",
         "Be ready to maintain the airway with ventilation as the patient deteriorates.",
-        "Apply oxygen if available.",
-        "Evacuate."
+        "Apply oxygen if available."
       ],
       notes: [
         "A stroke (cerebral vascular accident) interrupts cerebral circulation and leads to brain cell death.",
@@ -1317,7 +1338,9 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-exhaustion",
       name: "Heat Exhaustion",
       category: "Environmental - Heat",
+      inferred: ["management"],
       signs: [
+        "Hypovolemia.",
         "Dizziness.",
         "Headache.",
         "Nausea.",
@@ -1332,7 +1355,7 @@ window.WFA_DEFAULT_DATA = {
         "Cool the patient; monitor for progression to heat stroke."
       ],
       notes: [
-        "Hypovolemia from excessive sweating & electrolyte loss - loss of fluids like blood & water. This is an emergency."
+        "This is an emergency."
       ]
     },
     {

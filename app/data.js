@@ -8,7 +8,7 @@
  */
 window.WFA_DEFAULT_DATA = {
   meta: {
-    title: "Wilderness First Aid",
+    title: "Bearness First Aid",
     version: 1
   },
 

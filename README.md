@@ -1,4 +1,4 @@
-# Wilderness First Aid (offline reference)
+# Bearness First Aid (offline reference)
 
 A tiny, fully-offline web app of my Wilderness First Aid course notes - patient
 assessment, injuries/traumas with signs & symptoms, treatment, category and

@@ -1,4 +1,4 @@
-/* Wilderness First Aid - offline app logic. No frameworks, no network. */
+/* Bearness First Aid - offline app logic. No frameworks, no network. */
 (function () {
   "use strict";
 

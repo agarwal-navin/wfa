@@ -1,6 +1,6 @@
 {
-    "name": "Wilderness First Aid",
-    "short_name": "WFA",
+    "name": "Bearness First Aid",
+    "short_name": "Bearness",
     "description": "Offline wilderness first aid reference: patient assessment, injuries & treatments.",
     "start_url": "./index.html",
     "scope": "./",

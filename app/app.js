@@ -3,6 +3,7 @@
   "use strict";
 
   var STORAGE_KEY = "wfa_data_v1";
+  var RECENT_KEY = "wfa_recent_v1";
 
   // ---- State ---------------------------------------------------------------
   var state = {
@@ -18,6 +19,7 @@
   var view = document.getElementById("view");
   var searchInput = document.getElementById("search-input");
   var searchClear = document.getElementById("search-clear");
+  var recentEl = document.getElementById("recent");
   var editToggle = document.getElementById("edit-toggle");
   var dataToggle = document.getElementById("data-toggle");
   var menuToggle = document.getElementById("menu-toggle");
@@ -129,8 +131,8 @@
 
     view.innerHTML = "";
 
-    if (state.query.trim()) { renderSearch(); return; }
     if (state.detail) { renderDetail(); return; }
+    if (state.query.trim()) { renderSearch(); return; }
 
     if (state.tab === "injuries") renderInjuriesList();
     else if (state.tab === "assessment") renderTopicList("assessment");
@@ -268,6 +270,7 @@
 
   // ---- Detail views --------------------------------------------------------
   function openDetail(type, id) {
+    if (state.query.trim()) addRecent(state.query);
     if (state.editMode) {
       if (type === "injury") { openInjuryEditor(id); return; }
       openTopicEditor(type, id); return;
@@ -379,7 +382,7 @@
     var inj = findInjury(state.detail.id);
     if (!inj) { closeDetail(); return; }
     var frag = document.createDocumentFragment();
-    frag.appendChild(backButton("Injuries"));
+    frag.appendChild(backButton(state.query.trim() ? "Search" : "Injuries"));
     frag.appendChild(el("h2", { class: "detail-title", text: inj.name }));
     frag.appendChild(el("span", { class: "badge", text: inj.category || "Uncategorized" }));
 
@@ -401,7 +404,7 @@
     var topic = findTopic(type, state.detail.id);
     if (!topic) { closeDetail(); return; }
     var frag = document.createDocumentFragment();
-    frag.appendChild(backButton(meta.backLabel));
+    frag.appendChild(backButton(state.query.trim() ? "Search" : meta.backLabel));
     frag.appendChild(el("h2", { class: "detail-title", text: topic.title }));
 
     (topic.sections || []).forEach(function (sec) {
@@ -853,18 +856,88 @@
     });
   });
 
+  // ---- Recent searches -----------------------------------------------------
+  function loadRecent() {
+    try { var r = JSON.parse(localStorage.getItem(RECENT_KEY)); return Array.isArray(r) ? r : []; }
+    catch (e) { return []; }
+  }
+  function saveRecent(arr) {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function addRecent(term) {
+    term = (term || "").trim();
+    if (!term) return;
+    var arr = loadRecent().filter(function (t) { return t.toLowerCase() !== term.toLowerCase(); });
+    arr.unshift(term);
+    if (arr.length > 8) arr = arr.slice(0, 8);
+    saveRecent(arr);
+  }
+  function hideRecent() { recentEl.hidden = true; }
+  function showRecent() {
+    var q = searchInput.value.trim().toLowerCase();
+    var arr = loadRecent();
+    if (q) {
+      arr = arr.filter(function (t) {
+        var lt = t.toLowerCase();
+        return lt.indexOf(q) === 0 && lt !== q;
+      });
+    }
+    if (!arr.length) { hideRecent(); return; }
+    recentEl.innerHTML = "";
+    recentEl.appendChild(el("div", { class: "recent-head" }, [
+      el("span", { text: "Recent" }),
+      el("button", {
+        class: "recent-clear",
+        onclick: function (e) { e.stopPropagation(); saveRecent([]); hideRecent(); }
+      }, ["Clear"])
+    ]));
+    arr.forEach(function (term) {
+      recentEl.appendChild(el("div", { class: "recent-item" }, [
+        el("button", { class: "recent-term", onclick: function () { runSearch(term); } }, [term]),
+        el("button", {
+          class: "recent-del", "aria-label": "Remove",
+          onclick: function (e) {
+            e.stopPropagation();
+            saveRecent(loadRecent().filter(function (t) { return t !== term; }));
+            showRecent();
+          }
+        }, ["\u00D7"])
+      ]));
+    });
+    recentEl.hidden = false;
+  }
+  function runSearch(term) {
+    searchInput.value = term;
+    state.query = term;
+    searchClear.hidden = !term;
+    state.detail = null;
+    hideRecent();
+    render();
+    searchInput.blur();
+  }
+
   searchInput.addEventListener("input", function () {
     state.query = searchInput.value;
     searchClear.hidden = !state.query;
     state.detail = null;
+    showRecent();
     render();
+  });
+  searchInput.addEventListener("focus", function () { showRecent(); });
+  searchInput.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" && searchInput.value.trim()) { addRecent(searchInput.value); hideRecent(); }
+    else if (e.key === "Escape") { hideRecent(); }
   });
   searchClear.addEventListener("click", function () {
     state.query = "";
     searchInput.value = "";
     searchClear.hidden = true;
-    searchInput.focus();
     render();
+    searchInput.focus();
+    showRecent();
+  });
+  document.addEventListener("click", function (e) {
+    if (!recentEl.hidden && !e.target.closest(".search-wrap")) hideRecent();
   });
 
   editToggle.addEventListener("click", function () {

@@ -7,7 +7,7 @@
   // ---- State ---------------------------------------------------------------
   var state = {
     data: null,
-    tab: "injuries",
+    tab: "assessment",
     detail: null, // { type: 'injury'|'assessment', id }
     editing: false,
     editMode: false,
@@ -18,6 +18,9 @@
   var searchInput = document.getElementById("search-input");
   var searchClear = document.getElementById("search-clear");
   var editToggle = document.getElementById("edit-toggle");
+  var dataToggle = document.getElementById("data-toggle");
+  var editModeBar = document.getElementById("edit-mode-bar");
+  var editDone = document.getElementById("edit-done");
   var toastEl = document.getElementById("toast");
 
   // ---- Data load / persist -------------------------------------------------
@@ -29,7 +32,11 @@
     if (stored) {
       try {
         var parsed = JSON.parse(stored);
-        if (parsed && Array.isArray(parsed.injuries)) return parsed;
+        if (parsed && Array.isArray(parsed.injuries)) {
+          if (!Array.isArray(parsed.assessments)) parsed.assessments = deepClone(window.WFA_DEFAULT_DATA.assessments);
+          if (!Array.isArray(parsed.concepts)) parsed.concepts = deepClone(window.WFA_DEFAULT_DATA.concepts);
+          return parsed;
+        }
       } catch (e) { /* fall through */ }
     }
     return deepClone(window.WFA_DEFAULT_DATA);
@@ -45,7 +52,7 @@
 
   function resetToDefaults() {
     state.data = deepClone(window.WFA_DEFAULT_DATA);
-    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) { }
   }
 
   // ---- Helpers -------------------------------------------------------------
@@ -111,6 +118,7 @@
     // header edit button reflects mode
     editToggle.setAttribute("aria-pressed", state.editMode ? "true" : "false");
     editToggle.textContent = state.editMode ? "Done" : "Edit";
+    editModeBar.hidden = !state.editMode;
 
     document.querySelectorAll(".tab").forEach(function (t) {
       t.classList.toggle("active", t.getAttribute("data-tab") === state.tab);
@@ -122,7 +130,8 @@
     if (state.detail) { renderDetail(); return; }
 
     if (state.tab === "injuries") renderInjuriesList();
-    else if (state.tab === "assessment") renderAssessmentList();
+    else if (state.tab === "assessment") renderTopicList("assessment");
+    else if (state.tab === "concepts") renderTopicList("concept");
     else if (state.tab === "data") renderDataTab();
   }
 
@@ -131,8 +140,6 @@
     var frag = document.createDocumentFragment();
 
     if (state.editMode) {
-      frag.appendChild(el("div", { class: "edit-banner" },
-        ["Edit mode is on. Tap an injury to edit it, or add a new one below."]));
       frag.appendChild(el("button", {
         class: "btn btn-primary add-fab",
         onclick: function () { openInjuryEditor(null); }
@@ -177,16 +184,26 @@
     ]);
   }
 
-  // ---- Assessment list -----------------------------------------------------
-  function renderAssessmentList() {
+  // ---- Topic lists (assessments & concepts) --------------------------------
+  function topicCollection(type) {
+    return type === "concept" ? state.data.concepts : state.data.assessments;
+  }
+  function topicMeta(type) {
+    return type === "concept"
+      ? { listTitle: "Glossary", backLabel: "Glossary" }
+      : { listTitle: "Patient Assessment", backLabel: "Assessment" };
+  }
+
+  function renderTopicList(type) {
+    var meta = topicMeta(type);
     var frag = document.createDocumentFragment();
-    frag.appendChild(el("div", { class: "category-title", text: "Patient Assessment" }));
+    frag.appendChild(el("div", { class: "category-title", text: meta.listTitle }));
     var listWrap = el("div", { class: "list" });
-    state.data.assessments.forEach(function (topic) {
+    (topicCollection(type) || []).forEach(function (topic) {
       listWrap.appendChild(el("div", { class: "card" }, [
         el("button", {
           class: "row-btn",
-          onclick: function () { openDetail("assessment", topic.id); }
+          onclick: function () { openDetail(type, topic.id); }
         }, [
           el("span", {}, [topic.title]),
           el("span", { class: "chev" }, ["›"])
@@ -201,7 +218,7 @@
   function openDetail(type, id) {
     if (state.editMode) {
       if (type === "injury") { openInjuryEditor(id); return; }
-      if (type === "assessment") { openAssessmentEditor(id); return; }
+      openTopicEditor(type, id); return;
     }
     state.detail = { type: type, id: id };
     window.scrollTo(0, 0);
@@ -215,7 +232,7 @@
 
   function renderDetail() {
     if (state.detail.type === "injury") renderInjuryDetail();
-    else renderAssessmentDetail();
+    else renderTopicDetail(state.detail.type);
   }
 
   function backButton(label) {
@@ -230,6 +247,80 @@
       el("div", { class: "section-head " + cls, text: title }),
       ul
     ]);
+  }
+
+  // Builds an SVG "assessment pyramid" from a list of tier labels (top -> bottom).
+  function pyramidDiagram(diagram) {
+    var tiers = (diagram && diagram.tiers) || [];
+    if (!tiers.length) return null;
+
+    var padTop = 16, triH = 228, apexX = 90, baseHalf = 72;
+    var labelX = apexX + baseHalf + 30;
+    var n = tiers.length;
+    var bandH = triH / n;
+
+    function halfAt(y) { return baseHalf * ((y - padTop) / triH); }
+
+    var apexY = padTop;
+    var baseY = padTop + triH;
+    var parts = [];
+
+    parts.push(
+      '<defs><linearGradient id="wfaPyr" x1="0" y1="0" x2="0" y2="1">' +
+      '<stop offset="0" stop-color="#f87171"/>' +
+      '<stop offset="1" stop-color="#7f1d1d"/>' +
+      '</linearGradient></defs>'
+    );
+
+    // Triangle body.
+    parts.push(
+      '<polygon points="' + apexX + ',' + apexY + ' ' +
+      (apexX - baseHalf) + ',' + baseY + ' ' +
+      (apexX + baseHalf) + ',' + baseY +
+      '" fill="url(#wfaPyr)" stroke="#a91b1b" stroke-width="1.5"/>'
+    );
+
+    for (var i = 0; i < n; i++) {
+      var yTop = padTop + i * bandH;
+      var yMid = yTop + bandH / 2;
+
+      // Divider line (skip above the apex tier).
+      if (i > 0) {
+        var h = halfAt(yTop);
+        parts.push(
+          '<line x1="' + (apexX - h) + '" y1="' + yTop + '" x2="' + (apexX + h) +
+          '" y2="' + yTop + '" stroke="#ffffff" stroke-width="1.5"/>'
+        );
+      }
+
+      var xRight = apexX + halfAt(yMid);
+
+      // Connector from the triangle edge to the label.
+      parts.push(
+        '<line x1="' + xRight + '" y1="' + yMid + '" x2="' + (labelX - 8) +
+        '" y2="' + yMid + '" stroke="#94a3b8" stroke-width="1.25"/>'
+      );
+
+      // Numbered node at the connector origin.
+      parts.push(
+        '<circle cx="' + xRight + '" cy="' + yMid + '" r="9" fill="#ffffff" stroke="#a91b1b" stroke-width="1.5"/>' +
+        '<text x="' + xRight + '" y="' + yMid + '" text-anchor="middle" dominant-baseline="central" ' +
+        'font-size="11" font-weight="700" fill="#a91b1b">' + (i + 1) + '</text>'
+      );
+
+      // Tier label.
+      parts.push(
+        '<text x="' + labelX + '" y="' + yMid + '" dominant-baseline="central" ' +
+        'font-size="13" font-weight="600" fill="#0f172a">' + escapeHtml(tiers[i]) + '</text>'
+      );
+    }
+
+    var svg =
+      '<svg viewBox="0 0 460 ' + (baseY + 14) + '" role="img" ' +
+      'aria-label="Patient assessment pyramid: ' + escapeHtml(tiers.join(", ")) + '" ' +
+      'xmlns="http://www.w3.org/2000/svg">' + parts.join("") + '</svg>';
+
+    return el("div", { class: "diagram", html: svg });
   }
 
   function renderInjuryDetail() {
@@ -253,20 +344,31 @@
     view.appendChild(frag);
   }
 
-  function renderAssessmentDetail() {
-    var topic = findAssessment(state.detail.id);
+  function renderTopicDetail(type) {
+    var meta = topicMeta(type);
+    var topic = findTopic(type, state.detail.id);
     if (!topic) { closeDetail(); return; }
     var frag = document.createDocumentFragment();
-    frag.appendChild(backButton("Assessment"));
+    frag.appendChild(backButton(meta.backLabel));
     frag.appendChild(el("h2", { class: "detail-title", text: topic.title }));
 
     (topic.sections || []).forEach(function (sec) {
-      frag.appendChild(sectionCard("generic", sec.heading, sec.items));
+      var card = sectionCard("generic", sec.heading, sec.items);
+      if (sec.diagram) {
+        if (!card) {
+          card = el("div", { class: "section" }, [
+            el("div", { class: "section-head generic", text: sec.heading })
+          ]);
+        }
+        var diagramNode = pyramidDiagram(sec.diagram);
+        if (diagramNode) card.insertBefore(diagramNode, card.querySelector("ul"));
+      }
+      if (card) frag.appendChild(card);
     });
 
     if (state.editMode) {
       frag.appendChild(el("button", {
-        class: "btn btn-secondary", onclick: function () { openAssessmentEditor(topic.id); }
+        class: "btn btn-secondary", onclick: function () { openTopicEditor(type, topic.id); }
       }, ["Edit this topic"]));
     }
     view.appendChild(frag);
@@ -278,9 +380,10 @@
     }
     return null;
   }
-  function findAssessment(id) {
-    for (var i = 0; i < state.data.assessments.length; i++) {
-      if (state.data.assessments[i].id === id) return state.data.assessments[i];
+  function findTopic(type, id) {
+    var coll = topicCollection(type) || [];
+    for (var i = 0; i < coll.length; i++) {
+      if (coll[i].id === id) return coll[i];
     }
     return null;
   }
@@ -294,7 +397,7 @@
     // 1. Injuries by name or category
     var nameMatches = state.data.injuries.filter(function (inj) {
       return inj.name.toLowerCase().indexOf(ql) !== -1 ||
-             (inj.category || "").toLowerCase().indexOf(ql) !== -1;
+        (inj.category || "").toLowerCase().indexOf(ql) !== -1;
     });
 
     // 2. Injuries by sign/symptom (and management/notes) — with the matching line
@@ -302,33 +405,38 @@
     state.data.injuries.forEach(function (inj) {
       if (nameMatches.indexOf(inj) !== -1) return;
       var hitLine = firstMatchingLine(inj.signs, ql) ||
-                    firstMatchingLine(inj.management, ql) ||
-                    firstMatchingLine(inj.notes, ql);
+        firstMatchingLine(inj.management, ql) ||
+        firstMatchingLine(inj.notes, ql);
       if (hitLine) symptomMatches.push({ inj: inj, line: hitLine });
     });
 
-    // 3. Assessment topics / sections
-    var assessMatches = [];
-    state.data.assessments.forEach(function (topic) {
-      var line = null;
-      if (topic.title.toLowerCase().indexOf(ql) !== -1) line = topic.title;
-      if (!line && topic.keywords) {
-        for (var k = 0; k < topic.keywords.length; k++) {
-          if (topic.keywords[k].toLowerCase().indexOf(ql) !== -1) { line = topic.title; break; }
+    // 3. Assessment & concept topics / sections
+    function collectTopicMatches(collection) {
+      var out = [];
+      (collection || []).forEach(function (topic) {
+        var line = null;
+        if (topic.title.toLowerCase().indexOf(ql) !== -1) line = topic.title;
+        if (!line && topic.keywords) {
+          for (var k = 0; k < topic.keywords.length; k++) {
+            if (topic.keywords[k].toLowerCase().indexOf(ql) !== -1) { line = topic.title; break; }
+          }
         }
-      }
-      if (!line) {
-        (topic.sections || []).some(function (sec) {
-          var l = firstMatchingLine(sec.items, ql) ||
-                  (sec.heading.toLowerCase().indexOf(ql) !== -1 ? sec.heading : null);
-          if (l) { line = l; return true; }
-          return false;
-        });
-      }
-      if (line) assessMatches.push({ topic: topic, line: line });
-    });
+        if (!line) {
+          (topic.sections || []).some(function (sec) {
+            var l = firstMatchingLine(sec.items, ql) ||
+              (sec.heading.toLowerCase().indexOf(ql) !== -1 ? sec.heading : null);
+            if (l) { line = l; return true; }
+            return false;
+          });
+        }
+        if (line) out.push({ topic: topic, line: line });
+      });
+      return out;
+    }
+    var assessMatches = collectTopicMatches(state.data.assessments);
+    var conceptMatches = collectTopicMatches(state.data.concepts);
 
-    if (!nameMatches.length && !symptomMatches.length && !assessMatches.length) {
+    if (!nameMatches.length && !symptomMatches.length && !assessMatches.length && !conceptMatches.length) {
       frag.appendChild(el("div", { class: "empty" }, ["No matches for \u201C" + q + "\u201D."]));
       view.appendChild(frag);
       return;
@@ -360,6 +468,16 @@
           function () { openDetail("assessment", m.topic.id); }));
       });
       frag.appendChild(l3);
+    }
+
+    if (conceptMatches.length) {
+      frag.appendChild(el("div", { class: "result-section-label", text: "Glossary" }));
+      var l4 = el("div", { class: "list" });
+      conceptMatches.forEach(function (m) {
+        l4.appendChild(resultCard(m.topic.title, m.line === m.topic.title ? null : m.line, q,
+          function () { openDetail("concept", m.topic.id); }));
+      });
+      frag.appendChild(l4);
     }
 
     view.appendChild(frag);
@@ -436,46 +554,50 @@
     notesTa.value = (inj && inj.notes ? inj.notes : []).join("\n");
     frag.appendChild(field("Notes (one per line)", notesTa));
 
-    var saveBtn = el("button", { class: "btn btn-primary", onclick: function () {
-      var name = nameInput.value.trim();
-      if (!name) { toast("Please enter a name."); return; }
-      var category = catSelect.value;
-      if (category === "__new__") {
-        category = newCatInput.value.trim();
-        if (!category) { toast("Please enter the new category name."); return; }
-        if (state.data.categories.indexOf(category) === -1) state.data.categories.push(category);
+    var saveBtn = el("button", {
+      class: "btn btn-primary", onclick: function () {
+        var name = nameInput.value.trim();
+        if (!name) { toast("Please enter a name."); return; }
+        var category = catSelect.value;
+        if (category === "__new__") {
+          category = newCatInput.value.trim();
+          if (!category) { toast("Please enter the new category name."); return; }
+          if (state.data.categories.indexOf(category) === -1) state.data.categories.push(category);
+        }
+        var payload = {
+          name: name,
+          category: category,
+          signs: linesToArray(signsTa.value),
+          management: linesToArray(mgmtTa.value),
+          notes: linesToArray(notesTa.value)
+        };
+        if (isNew) {
+          payload.id = uniqueInjuryId(name);
+          state.data.injuries.push(payload);
+          state.detail = { type: "injury", id: payload.id };
+        } else {
+          inj.name = payload.name; inj.category = payload.category;
+          inj.signs = payload.signs; inj.management = payload.management; inj.notes = payload.notes;
+          state.detail = { type: "injury", id: inj.id };
+        }
+        persist();
+        toast("Saved.");
+        render();
       }
-      var payload = {
-        name: name,
-        category: category,
-        signs: linesToArray(signsTa.value),
-        management: linesToArray(mgmtTa.value),
-        notes: linesToArray(notesTa.value)
-      };
-      if (isNew) {
-        payload.id = uniqueInjuryId(name);
-        state.data.injuries.push(payload);
-        state.detail = { type: "injury", id: payload.id };
-      } else {
-        inj.name = payload.name; inj.category = payload.category;
-        inj.signs = payload.signs; inj.management = payload.management; inj.notes = payload.notes;
-        state.detail = { type: "injury", id: inj.id };
-      }
-      persist();
-      toast("Saved.");
-      render();
-    } }, ["Save"]);
+    }, ["Save"]);
 
     var btnRow = el("div", { class: "btn-row" }, [saveBtn]);
     if (!isNew) {
-      btnRow.appendChild(el("button", { class: "btn btn-danger", onclick: function () {
-        if (!confirm("Delete \u201C" + inj.name + "\u201D? This cannot be undone.")) return;
-        state.data.injuries = state.data.injuries.filter(function (x) { return x.id !== inj.id; });
-        state.detail = null;
-        persist();
-        toast("Deleted.");
-        render();
-      } }, ["Delete"]));
+      btnRow.appendChild(el("button", {
+        class: "btn btn-danger", onclick: function () {
+          if (!confirm("Delete \u201C" + inj.name + "\u201D? This cannot be undone.")) return;
+          state.data.injuries = state.data.injuries.filter(function (x) { return x.id !== inj.id; });
+          state.detail = null;
+          persist();
+          toast("Deleted.");
+          render();
+        }
+      }, ["Delete"]));
     }
     frag.appendChild(btnRow);
 
@@ -512,8 +634,8 @@
     return sections;
   }
 
-  function openAssessmentEditor(id) {
-    var topic = findAssessment(id);
+  function openTopicEditor(type, id) {
+    var topic = findTopic(type, id);
     if (!topic) { closeDetail(); return; }
     var frag = document.createDocumentFragment();
     frag.appendChild(el("button", {
@@ -532,14 +654,24 @@
       ["Lines starting with \u201C# \u201D are section headings. All other lines are bullet points."]));
 
     frag.appendChild(el("div", { class: "btn-row" }, [
-      el("button", { class: "btn btn-primary", onclick: function () {
-        topic.title = titleInput.value.trim() || topic.title;
-        topic.sections = textToSections(bodyTa.value);
-        state.detail = { type: "assessment", id: topic.id };
-        persist();
-        toast("Saved.");
-        render();
-      } }, ["Save"])
+      el("button", {
+        class: "btn btn-primary", onclick: function () {
+          topic.title = titleInput.value.trim() || topic.title;
+          // Preserve non-text extras (e.g. diagrams) by matching on heading.
+          var priorDiagrams = {};
+          (topic.sections || []).forEach(function (sec) {
+            if (sec.diagram) priorDiagrams[sec.heading] = sec.diagram;
+          });
+          topic.sections = textToSections(bodyTa.value);
+          topic.sections.forEach(function (sec) {
+            if (priorDiagrams[sec.heading]) sec.diagram = priorDiagrams[sec.heading];
+          });
+          state.detail = { type: type, id: topic.id };
+          persist();
+          toast("Saved.");
+          render();
+        }
+      }, ["Save"])
     ]));
 
     state.detail = { type: "editor" };
@@ -558,10 +690,16 @@
   function renderDataTab() {
     var frag = document.createDocumentFragment();
 
+    frag.appendChild(el("button", {
+      class: "detail-back",
+      onclick: function () { state.tab = "assessment"; window.scrollTo(0, 0); render(); }
+    }, ["‹ Back"]));
+
     var counts = el("p", {}, [
       state.data.injuries.length + " injuries · " +
       state.data.categories.length + " categories · " +
-      state.data.assessments.length + " assessment topics"
+      state.data.assessments.length + " assessment topics · " +
+      (state.data.concepts ? state.data.concepts.length : 0) + " glossary entries"
     ]);
 
     // Backup
@@ -594,12 +732,14 @@
       el("h2", {}, ["Reset"]),
       el("p", {}, ["Discard all edits and restore the original course notes."]),
       el("div", { class: "btn-row" }, [
-        el("button", { class: "btn btn-danger", onclick: function () {
-          if (!confirm("Discard all edits and reset to the original notes?")) return;
-          resetToDefaults();
-          toast("Reset to original notes.");
-          render();
-        } }, ["Reset to original"])
+        el("button", {
+          class: "btn btn-danger", onclick: function () {
+            if (!confirm("Discard all edits and reset to the original notes?")) return;
+            resetToDefaults();
+            toast("Reset to original notes.");
+            render();
+          }
+        }, ["Reset to original"])
       ])
     ]);
 
@@ -636,6 +776,7 @@
         if (!parsed || !Array.isArray(parsed.injuries)) throw new Error("bad");
         if (!Array.isArray(parsed.categories)) parsed.categories = [];
         if (!Array.isArray(parsed.assessments)) parsed.assessments = [];
+        if (!Array.isArray(parsed.concepts)) parsed.concepts = [];
         state.data = parsed;
         persist();
         toast("Imported.");
@@ -680,10 +821,26 @@
     render();
   });
 
+  editDone.addEventListener("click", function () {
+    state.editMode = false;
+    if (state.detail && state.detail.type === "editor") state.detail = null;
+    render();
+  });
+
+  dataToggle.addEventListener("click", function () {
+    state.tab = "data";
+    state.detail = null;
+    state.query = "";
+    searchInput.value = "";
+    searchClear.hidden = true;
+    window.scrollTo(0, 0);
+    render();
+  });
+
   // ---- Service worker (only helps when served over http/https) -------------
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
     window.addEventListener("load", function () {
-      navigator.serviceWorker.register("sw.js").catch(function () {});
+      navigator.serviceWorker.register("sw.js").catch(function () { });
     });
   }
 

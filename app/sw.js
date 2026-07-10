@@ -1,6 +1,6 @@
 /* Service worker: cache the app shell so it works fully offline once loaded.
    Only active when the app is served over http(s) (e.g. GitHub Pages). */
-var CACHE = "wfa-cache-v1";
+var CACHE = "wfa-cache-v11";
 var ASSETS = [
   "./",
   "./index.html",
@@ -8,7 +8,6 @@ var ASSETS = [
   "./app.js",
   "./data.js",
   "./manifest.webmanifest",
-  "./icons/icon.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/apple-touch-icon.png"
@@ -42,7 +41,7 @@ self.addEventListener("fetch", function (e) {
       if (cached) return cached;
       return fetch(e.request).then(function (res) {
         var copy = res.clone();
-        caches.open(CACHE).then(function (c) { c.put(e.request, copy); }).catch(function () {});
+        caches.open(CACHE).then(function (c) { c.put(e.request, copy); }).catch(function () { });
         return res;
       }).catch(function () {
         return caches.match("./index.html");

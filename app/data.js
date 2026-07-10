@@ -18,21 +18,21 @@ window.WFA_DEFAULT_DATA = {
   assessments: [
     {
       id: "overview",
-      title: "Overview & ABCDEs",
-      keywords: ["abcde", "basic life sustaining", "perfusion", "order"],
+      title: "Overview",
+      keywords: ["overview", "order", "patient assessment", "steps"],
       sections: [
         {
-          heading: "Basic Life Sustaining Functions — ABCDEs",
-          items: [
-            "A — Airway",
-            "B — Breathing",
-            "C — Circulation",
-            "D — Disability of Nervous System",
-            "E — Environment & Evacuation Decision"
-          ]
-        },
-        {
           heading: "Patient Assessment order",
+          diagram: {
+            type: "pyramid",
+            tiers: [
+              "Scene Size-Up (STERI)",
+              "Primary Assessment (ABCDE)",
+              "Secondary Assessment",
+              "Management",
+              "Ongoing Assessment"
+            ]
+          },
           items: [
             "Scene Size-Up (STERI)",
             "Primary Assessment (ABCDE)",
@@ -57,6 +57,41 @@ window.WFA_DEFAULT_DATA = {
             "R — Resources",
             "I — Impression"
           ]
+        },
+        {
+          heading: "S — Safety",
+          items: [
+            "Is the scene safe for you, the patient & bystanders?",
+            "Scan for hazards — rockfall, traffic, wildlife, water, weather, unstable ground — before approaching."
+          ]
+        },
+        {
+          heading: "T — Terrain",
+          items: [
+            "Note the ground & access: steep, loose, wet or exposed terrain.",
+            "It affects how you reach, treat & evacuate the patient."
+          ]
+        },
+        {
+          heading: "E — Environment",
+          items: [
+            "Weather & conditions — heat, cold, rain, wind, altitude — that threaten patient & rescuers.",
+            "Plan protection from the elements early."
+          ]
+        },
+        {
+          heading: "R — Resources",
+          items: [
+            "What & who do you have: people, gear, first-aid supplies, communication & evacuation options?",
+            "Call for additional help early if you may need it."
+          ]
+        },
+        {
+          heading: "I — Impression",
+          items: [
+            "Form a general impression: Mechanism of Injury (MOI) or Nature of Illness (NOI).",
+            "Count the number of patients & gauge overall severity."
+          ]
         }
       ]
     },
@@ -65,6 +100,16 @@ window.WFA_DEFAULT_DATA = {
       title: "Primary Assessment (ABCDE)",
       keywords: ["consent", "airway", "breathing", "circulation", "disability", "environment", "blood sweep"],
       sections: [
+        {
+          heading: "ABCDE",
+          items: [
+            "A — Airway",
+            "B — Breathing",
+            "C — Circulation",
+            "D — Disability",
+            "E — Environment"
+          ]
+        },
         {
           heading: "Start with consent",
           items: [
@@ -112,11 +157,11 @@ window.WFA_DEFAULT_DATA = {
     },
     {
       id: "history",
-      title: "Secondary Assessment — History (SAMPLE)",
+      title: "Secondary Assessment (SAMPLE)",
       keywords: ["sample", "signs", "symptoms", "allergies", "medications", "past medical", "last ins and outs", "events"],
       sections: [
         {
-          heading: "SAMPLE history (record everything)",
+          heading: "SAMPLE",
           items: [
             "S — Signs & Symptoms",
             "A — Allergies",
@@ -179,51 +224,97 @@ window.WFA_DEFAULT_DATA = {
           heading: "OPQRST",
           items: [
             "O — Onset",
-            "P — Provocation / Palliates (becomes less / mitigates)",
-            "Q — Quality — sharp, dull, burning, crushing, etc.",
+            "P — Provocation / Palliation",
+            "Q — Quality",
             "R — Radiation",
             "S — Severity",
             "T — Time"
+          ]
+        },
+        {
+          heading: "O — Onset",
+          items: [
+            "What were you doing when the pain started?",
+            "Did it come on suddenly or gradually?"
+          ]
+        },
+        {
+          heading: "P — Provocation / Palliation",
+          items: [
+            "What makes the pain worse or better — movement, rest, pressure, position?"
+          ]
+        },
+        {
+          heading: "Q — Quality",
+          items: [
+            "How does it feel — sharp, dull, burning, crushing, cramping?",
+            "Let the patient describe it in their own words."
+          ]
+        },
+        {
+          heading: "R — Radiation",
+          items: [
+            "Does the pain stay in one place or move / spread anywhere else?"
+          ]
+        },
+        {
+          heading: "S — Severity",
+          items: [
+            "Rate the pain 0–10 & note how much it limits activity.",
+            "Recheck over time to see if it's improving or worsening."
+          ]
+        },
+        {
+          heading: "T — Time",
+          items: [
+            "When did it start & how has it changed since?",
+            "Is it constant, or does it come & go?"
           ]
         }
       ]
     },
     {
       id: "vitals",
-      title: "Vital Signs",
-      keywords: ["avpu", "level of consciousness", "skin", "clammy", "heart rate", "respiratory rate", "vitals"],
+      title: "Vital Signs (AVPU)",
+      keywords: ["avpu", "level of consciousness", "alert", "verbal", "pain", "unresponsive", "vitals"],
       sections: [
         {
-          heading: "General",
+          heading: "AVPU",
           items: [
-            "Take multiple times to see if the patient is getting better or worse."
+            "A — Alert & Oriented",
+            "V — Verbal",
+            "P — Pain",
+            "U — Unresponsive"
           ]
         },
         {
-          heading: "Level of Consciousness — AVPU",
+          heading: "A — Alert & Oriented",
           items: [
-            "A — Alert & Oriented (A&O). A&O x4: Place (where), Person (who), Time (relative idea), Event (what happened).",
-            "V — Verbal: is the patient responding in any way to verbal stimuli?",
-            "P — Pain: patients not responding to verbal stimuli may respond to painful stimuli (a small pinch, not extreme).",
-            "U — Unresponsive."
+            "Alert & Oriented (A&O). A&O x4: Place (where), Person (who), Time (relative idea), Event (what happened)."
           ]
         },
         {
-          heading: "Skin",
+          heading: "V — Verbal",
           items: [
-            "\"Clammy\" — lacks pigmentation, is cool & very moist."
+            "Is the patient responding in any way to verbal stimuli?"
           ]
         },
         {
-          heading: "Heart Rate",
+          heading: "P — Pain",
           items: [
-            "Number of beats/min (60–100 normal)."
+            "Patients not responding to verbal stimuli may respond to painful stimuli (a small pinch, not extreme)."
           ]
         },
         {
-          heading: "Respiratory Rate",
+          heading: "U — Unresponsive",
           items: [
-            "Number of breaths/min (12 to 20 normal)."
+            "No response to verbal or painful stimuli."
+          ]
+        },
+        {
+          heading: "Notes",
+          items: [
+            "Take vital signs multiple times to see if the patient is getting better or worse."
           ]
         }
       ]
@@ -249,31 +340,72 @@ window.WFA_DEFAULT_DATA = {
           ]
         }
       ]
-    },
+    }
+  ],
+
+  // ---------------------------------------------------------------------------
+  // KEY CONCEPTS — foundational terms & measurements
+  // ---------------------------------------------------------------------------
+  concepts: [
     {
-      id: "bleeding",
-      title: "Bleeding & Perfusion",
-      keywords: ["bleeding", "capillary", "venous", "arterial", "perfusion", "shock", "tourniquet"],
+      id: "perfusion",
+      title: "Perfusion",
+      keywords: ["perfusion", "oxygen", "nutrients", "cells"],
       sections: [
         {
           heading: "Perfusion",
           items: [
-            "Oxygen & other vital nutrients should reach the body's cells. This is known as perfusion.",
-            "Shock is inadequate perfusion. It doesn't occur spontaneously — it is secondary to its cause."
+            "Perfusion is oxygen & other vital nutrients reaching the body's cells.",
+            "Every cell needs adequate perfusion to survive & function."
+          ]
+        }
+      ]
+    },
+    {
+      id: "shock",
+      title: "Shock",
+      keywords: ["shock", "perfusion", "inadequate", "secondary"],
+      sections: [
+        {
+          heading: "Shock",
+          items: [
+            "Shock is inadequate perfusion.",
+            "It doesn't occur spontaneously — it is always secondary to its cause, so treat the cause."
+          ]
+        }
+      ]
+    },
+    {
+      id: "bleeding",
+      title: "Bleeding",
+      keywords: ["bleeding", "capillary", "venous", "arterial", "hemorrhage", "blood"],
+      sections: [
+        {
+          heading: "Why bleeding matters",
+          items: [
+            "Bleeding leads to less blood, which means less oxygen delivered to the body, leading to shock."
           ]
         },
         {
-          heading: "Bleeding",
+          heading: "Types of bleeds",
           items: [
-            "Bleeding leads to less blood, means less oxygen delivered to the body, leading to shock.",
-            "3 types of bleeds: capillary, venous & arterial."
+            "Capillary — slow oozing from small vessels; usually easy to control.",
+            "Venous — steady, darker red flow.",
+            "Arterial — bright red & spurting with the pulse; the most serious."
           ]
-        },
+        }
+      ]
+    },
+    {
+      id: "tourniquets",
+      title: "Tourniquets",
+      keywords: ["tourniquet", "windlass", "bleeding", "limb"],
+      sections: [
         {
-          heading: "Tourniquets",
+          heading: "Applying a tourniquet",
           items: [
-            "2–3 inches above the wound when possible. If a joint, above the joint.",
-            "Wrap around limb at least twice.",
+            "2–3 inches above the wound when possible. If over a joint, place it above the joint.",
+            "Wrap around the limb at least twice.",
             "Tie a half knot.",
             "Use a stick, trauma shears or sturdy instrument as a windlass.",
             "Place it over the half knot & secure with a full knot.",
@@ -282,6 +414,61 @@ window.WFA_DEFAULT_DATA = {
             "DO NOT REMOVE IT.",
             "If bleeding doesn't stop, tighten or apply another one side-by-side.",
             "WRITE THE TIME ON THE TOURNIQUET."
+          ]
+        }
+      ]
+    },
+    {
+      id: "skin",
+      title: "Skin",
+      keywords: ["skin", "pale", "color", "temperature", "moisture", "perfusion"],
+      sections: [
+        {
+          heading: "Skin",
+          items: [
+            "Skin color, temperature & moisture reflect perfusion."
+          ]
+        }
+      ]
+    },
+    {
+      id: "clammy",
+      title: "Clammy",
+      keywords: ["clammy", "cool", "moist", "pale", "skin"],
+      sections: [
+        {
+          heading: "Clammy",
+          items: [
+            "\"Clammy\" skin lacks pigmentation, is cool & very moist.",
+            "Often a sign of poor perfusion or shock."
+          ]
+        }
+      ]
+    },
+    {
+      id: "heart-rate",
+      title: "Heart Rate",
+      keywords: ["heart rate", "pulse", "bpm", "beats"],
+      sections: [
+        {
+          heading: "Heart Rate",
+          items: [
+            "Number of beats per minute (60–100 normal).",
+            "Recheck over time to spot trends."
+          ]
+        }
+      ]
+    },
+    {
+      id: "respiratory-rate",
+      title: "Respiratory Rate",
+      keywords: ["respiratory rate", "breaths", "breathing", "rr"],
+      sections: [
+        {
+          heading: "Respiratory Rate",
+          items: [
+            "Number of breaths per minute (12–20 normal).",
+            "Recheck over time to spot trends."
           ]
         }
       ]

@@ -20,13 +20,14 @@
   var searchInput = document.getElementById("search-input");
   var searchClear = document.getElementById("search-clear");
   var recentEl = document.getElementById("recent");
-  var editToggle = document.getElementById("edit-toggle");
-  var dataToggle = document.getElementById("data-toggle");
-  var menuToggle = document.getElementById("menu-toggle");
-  var menu = document.getElementById("menu");
   var editModeBar = document.getElementById("edit-mode-bar");
   var editDone = document.getElementById("edit-done");
   var toastEl = document.getElementById("toast");
+
+  // Shared header burger menu (markup + open/close live in ../menu.js).
+  WFA.mountMenu({ mount: "menu-mount", base: "../", appActions: true });
+  var editToggle = document.getElementById("edit-toggle");
+  var dataToggle = document.getElementById("data-toggle");
 
   // ---- Data load / persist -------------------------------------------------
   function deepClone(obj) { return JSON.parse(JSON.stringify(obj)); }
@@ -968,22 +969,6 @@
     render();
   });
 
-  // ---- Burger menu ---------------------------------------------------------
-  function closeMenu() {
-    menu.hidden = true;
-    menuToggle.setAttribute("aria-expanded", "false");
-  }
-  menuToggle.addEventListener("click", function (e) {
-    e.stopPropagation();
-    var willOpen = menu.hidden;
-    menu.hidden = !willOpen;
-    menuToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
-  });
-  menu.addEventListener("click", function () { closeMenu(); });
-  document.addEventListener("click", function (e) {
-    if (!menu.hidden && !menu.contains(e.target) && e.target !== menuToggle) closeMenu();
-  });
-
   // ---- Service worker (only helps when served over http/https) -------------
   if ("serviceWorker" in navigator && location.protocol.indexOf("http") === 0) {
     window.addEventListener("load", function () {
@@ -993,5 +978,11 @@
 
   // ---- Boot ----------------------------------------------------------------
   state.data = loadData();
+  // Deep links from the shared menu on other pages (e.g. install page).
+  if (location.hash === "#edit") {
+    state.editMode = true;
+  } else if (location.hash === "#data") {
+    state.tab = "data";
+  }
   render();
 })();

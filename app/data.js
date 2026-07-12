@@ -517,6 +517,7 @@ window.WFA_DEFAULT_DATA = {
       id: "shock",
       name: "Shock",
       category: "Circulation & Shock",
+      description: "Inadequate perfusion — not enough oxygen and nutrients reach the body's cells. It is always secondary to an underlying cause, never spontaneous.",
       inferred: ["signs", "management"],
       signs: [
         "Inadequate perfusion - signs depend on the underlying cause.",
@@ -536,6 +537,7 @@ window.WFA_DEFAULT_DATA = {
       id: "severe-bleeding",
       name: "Severe Bleeding / Hemorrhage",
       category: "Circulation & Shock",
+      description: "Significant loss of blood from a damaged vessel (capillary, venous or arterial) that can rapidly lead to shock.",
       signs: [
         "Three types of bleeds: capillary, venous & arterial.",
         "Arterial bleeding is bright and spurting; venous is darker and steady."
@@ -556,6 +558,7 @@ window.WFA_DEFAULT_DATA = {
       id: "spinal-injury",
       name: "Spinal Injury",
       category: "Neurological & Spinal",
+      description: "Damage to the spinal cord or spinal column that can cause temporary or permanent loss of movement and sensation below the level of injury.",
       signs: [
         "Numbness or tingling in the hands or feet that are uninjured.",
         "Decreased ability to move or feel parts of the body.",
@@ -579,6 +582,7 @@ window.WFA_DEFAULT_DATA = {
       id: "concussion",
       name: "Concussion / Brain Injury",
       category: "Brain / Head",
+      description: "A mild traumatic brain injury in which the brain temporarily doesn't work normally after a blow or jolt to the head.",
       signs: [
         "Concussion signs: headache, nausea, memory problems, confusion, balance issues, sensitivity to light or noise.",
         "Warning signs of a SEVERE structural brain injury: long loss of consciousness, seizures, repeated vomiting, worsening condition, use of blood thinner, signs of skull fracture, change in size or unequal pupils."
@@ -600,6 +604,7 @@ window.WFA_DEFAULT_DATA = {
       id: "musculoskeletal",
       name: "Musculoskeletal Injury",
       category: "Musculoskeletal",
+      description: "Trauma to the body's bones, joints, muscles, ligaments or tendons — including fractures, sprains and strains.",
       signs: [
         "Assessed with CMS = Circulation, Movement & Sensation.",
         "Circulation: pale, blue, purple or black skin, or swollen areas - bad! No pulse below the injury - bad!",
@@ -619,6 +624,7 @@ window.WFA_DEFAULT_DATA = {
       id: "wounds",
       name: "Wounds",
       category: "Wounds & Soft Tissue",
+      description: "A break in the skin or soft tissue that bleeds and carries a risk of infection.",
       signs: [
         "Bleeding and risk of infection.",
         "Watch for signs of infection developing over time."
@@ -641,6 +647,7 @@ window.WFA_DEFAULT_DATA = {
       id: "sepsis",
       name: "Sepsis / Septic Shock",
       category: "Wounds & Soft Tissue",
+      description: "A life-threatening condition in which the body's response to an infection turns on itself and injures its own organs; it can progress to septic shock.",
       inferred: ["management"],
       signs: [
         "Fever.",
@@ -661,6 +668,7 @@ window.WFA_DEFAULT_DATA = {
       id: "burns",
       name: "Burns",
       category: "Burns",
+      description: "Injury to the skin and underlying tissue from heat, graded by depth as superficial, partial-thickness or full-thickness.",
       inferred: ["signs"],
       signs: [
         "Superficial, partial thickness, or full thickness burns."
@@ -677,6 +685,7 @@ window.WFA_DEFAULT_DATA = {
       id: "abdominal-trauma",
       name: "Abdominal Trauma",
       category: "Abdominal Trauma",
+      description: "Injury to the abdomen from blunt or penetrating force that can damage internal organs and cause hidden internal bleeding.",
       signs: [
         "Bruising around the belly button.",
         "Swelling.",
@@ -698,6 +707,7 @@ window.WFA_DEFAULT_DATA = {
       id: "impalement",
       name: "Impalement",
       category: "Wounds & Soft Tissue",
+      description: "An injury in which a foreign object penetrates and remains lodged in the body.",
       inferred: ["signs"],
       signs: [
         "Object embedded in the body."
@@ -712,6 +722,7 @@ window.WFA_DEFAULT_DATA = {
       id: "evisceration",
       name: "Evisceration",
       category: "Abdominal Trauma",
+      description: "An open abdominal wound through which internal organs protrude outside the body.",
       signs: [
         "Organs protruding from the abdomen."
       ],
@@ -726,6 +737,7 @@ window.WFA_DEFAULT_DATA = {
       id: "flail-chest",
       name: "Flail Chest",
       category: "Chest Trauma",
+      description: "A serious chest injury in which two or more adjacent ribs are each broken in multiple places, leaving a segment that moves independently of the rest of the chest wall.",
       signs: [
         "Shallow breathing.",
         "Lips or fingers turning blue."
@@ -744,6 +756,7 @@ window.WFA_DEFAULT_DATA = {
       id: "rib-fracture",
       name: "Rib Fracture",
       category: "Chest Trauma",
+      description: "A break or crack in one or more ribs, usually from a direct blow or fall; isolated fractures are painful but generally benign.",
       inferred: ["signs", "management"],
       signs: [
         "Pain, especially with breathing."
@@ -760,6 +773,7 @@ window.WFA_DEFAULT_DATA = {
       id: "pneumothorax",
       name: "Pneumothorax",
       category: "Chest Trauma",
+      description: "Air trapped in the space between the lung and the chest wall, which can cause the lung to partially or fully collapse.",
       inferred: ["management"],
       signs: [
         "Sudden chest pain.",
@@ -779,6 +793,7 @@ window.WFA_DEFAULT_DATA = {
       id: "tension-pneumothorax",
       name: "Tension Pneumothorax",
       category: "Chest Trauma",
+      description: "A life-threatening pneumothorax in which trapped air builds up under pressure and pushes on the heart, blood vessels and the other lung.",
       inferred: ["management"],
       signs: [
         "Compromised ABCs."
@@ -794,6 +809,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hemothorax",
       name: "Hemothorax / Hemopneumothorax",
       category: "Chest Trauma",
+      description: "A collection of blood in the space between the lung and the chest wall (a hemopneumothorax involves both blood and air).",
       signs: [
         "\"Bubbling chest wound\".",
         "Shortness of breath and chest pain."
@@ -811,6 +827,7 @@ window.WFA_DEFAULT_DATA = {
       id: "lung-contusion",
       name: "Lung Contusion",
       category: "Chest Trauma",
+      description: "A bruise of the lung from chest trauma, causing bleeding and fluid buildup that can interfere with breathing.",
       inferred: ["management"],
       signs: [
         "Shortness of breath.",
@@ -828,6 +845,7 @@ window.WFA_DEFAULT_DATA = {
       id: "cardiac-tamponade",
       name: "Cardiac Tamponade",
       category: "Heart / Cardiac",
+      description: "A build-up of fluid in the sac around the heart that presses on it and prevents it from filling with blood.",
       inferred: ["signs", "management"],
       signs: [
         "Signs of shock; the heart cannot fill properly."
@@ -843,6 +861,7 @@ window.WFA_DEFAULT_DATA = {
       id: "cardiac-contusion",
       name: "Cardiac Contusion",
       category: "Heart / Cardiac",
+      description: "A bruise of the heart muscle caused by blunt chest trauma.",
       inferred: ["management"],
       signs: [
         "Chest pain.",
@@ -862,6 +881,7 @@ window.WFA_DEFAULT_DATA = {
       id: "anaphylaxis",
       name: "Anaphylaxis",
       category: "Allergic",
+      description: "A severe, life-threatening allergic reaction involving multiple body systems that can rapidly compromise breathing and circulation.",
       signs: [
         "Skin issues such as itchiness, rashes & hives.",
         "Swelling of the mouth, lips or tongue.",
@@ -883,6 +903,7 @@ window.WFA_DEFAULT_DATA = {
       id: "epiglottitis",
       name: "Epiglottitis",
       category: "Respiratory",
+      description: "Inflammation and swelling of the epiglottis that can rapidly block the airway; a life-threatening emergency.",
       signs: [
         "High fever.",
         "Very sore throat.",
@@ -900,6 +921,7 @@ window.WFA_DEFAULT_DATA = {
       id: "pneumonia",
       name: "Pneumonia",
       category: "Respiratory",
+      description: "An infection of the lung that fills the air sacs with fluid and interferes with breathing.",
       signs: [
         "Fever.",
         "Productive cough - brings up mucus or phlegm.",
@@ -920,6 +942,7 @@ window.WFA_DEFAULT_DATA = {
       id: "tuberculosis",
       name: "Tuberculosis",
       category: "Respiratory",
+      description: "A contagious bacterial lung infection caused by Mycobacterium tuberculosis.",
       signs: [
         "Fever.",
         "Coughing.",
@@ -939,6 +962,7 @@ window.WFA_DEFAULT_DATA = {
       id: "asthma-copd",
       name: "Asthma / COPD",
       category: "Respiratory",
+      description: "Chronic airway conditions that narrow the airways and make breathing difficult — asthma from reversible bronchial spasm, COPD from ongoing obstructive lung disease.",
       signs: [
         "Wheezing & coughing.",
         "Chest tightness.",
@@ -958,6 +982,7 @@ window.WFA_DEFAULT_DATA = {
       id: "pulmonary-edema",
       name: "Pulmonary Edema",
       category: "Respiratory",
+      description: "A build-up of fluid in the lungs, often because the left side of the heart isn't pumping effectively.",
       signs: [
         "Coughing.",
         "Pink frothy sputum.",
@@ -977,6 +1002,7 @@ window.WFA_DEFAULT_DATA = {
       id: "pulmonary-embolism",
       name: "Pulmonary Embolism",
       category: "Respiratory",
+      description: "A blood clot lodged in the arteries of the lungs that blocks blood flow.",
       signs: [
         "Chest pain.",
         "Dyspnea.",
@@ -995,6 +1021,7 @@ window.WFA_DEFAULT_DATA = {
       id: "myocardial-infarction",
       name: "Myocardial Infarction (Heart Attack)",
       category: "Heart / Cardiac",
+      description: "A heart attack — blocked blood flow to the heart muscle starves and kills cardiac tissue.",
       signs: [
         "Chest pain (hallmark symptom).",
         "Weakness.",
@@ -1025,6 +1052,7 @@ window.WFA_DEFAULT_DATA = {
       id: "diabetes",
       name: "Diabetes",
       category: "Diabetic / Metabolic",
+      description: "A chronic condition in which the body can't properly regulate blood glucose due to a lack of insulin (Type 1) or a reduced response to it (Type 2).",
       signs: [],
       management: [],
       notes: [
@@ -1037,6 +1065,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hypoglycemia",
       name: "Hypoglycemia",
       category: "Diabetic / Metabolic",
+      description: "Abnormally low blood glucose, which starves the brain and is an immediate life threat if not corrected.",
       signs: [
         "Altered mentation or behavioral changes - including appearing drunk or becoming aggressive.",
         "Dizziness.",
@@ -1063,6 +1092,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hyperglycemia",
       name: "Hyperglycemia",
       category: "Diabetic / Metabolic",
+      description: "Abnormally high blood glucose in which sugar builds up in the blood but can't get into the cells; onset is slower, over days.",
       signs: [
         "Increased urination.",
         "Increased thirst & hunger.",
@@ -1084,6 +1114,7 @@ window.WFA_DEFAULT_DATA = {
       id: "headaches",
       name: "Headaches",
       category: "Neurological & Spinal",
+      description: "Pain in the head or upper neck, ranging from tension and sinus headaches to migraines.",
       signs: [
         "Tension headaches: squeezing, dull or aching pain from tense neck, shoulder and scalp muscles.",
         "Sinus headaches: pressure from fluid collected in the sinuses; often paired with cold-like symptoms (congestion, cough, chills, fever); worse with head movement.",
@@ -1103,6 +1134,7 @@ window.WFA_DEFAULT_DATA = {
       id: "stroke",
       name: "Stroke",
       category: "Neurological & Spinal",
+      description: "A cerebral vascular accident — interrupted blood flow to part of the brain, from a clot or a bleed, that causes brain cell death.",
       signs: [
         "Altered mentation.",
         "Aphasia (inability to use or understand words).",
@@ -1128,6 +1160,7 @@ window.WFA_DEFAULT_DATA = {
       id: "seizures",
       name: "Seizures",
       category: "Neurological & Spinal",
+      description: "A neurological episode caused by a surge of abnormal electrical activity in the brain.",
       signs: [
         "Partial seizures: altered mentation but no loss of consciousness; isolated muscle twitching, lip smacking & abnormal facial movements.",
         "Generalized seizures: loss of consciousness & chaotic muscle contractions, lasting 2 to 5 minutes.",
@@ -1148,6 +1181,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hypothermia",
       name: "Hypothermia",
       category: "Environmental - Cold",
+      description: "A dangerous drop in core body temperature below the normal 98.6°F (37°C).",
       signs: [
         "Drop in core body temperature below the normal 98.6°F (37°C).",
         "Combined with shock/trauma, it worsens shock and significantly reduces survival chances."
@@ -1165,6 +1199,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hyponatremia",
       name: "Hyponatremia",
       category: "Environmental - Cold",
+      description: "A drop in the body's sodium level, often from over-hydration; also called water intoxication.",
       signs: [
         "Fatigue/weakness.",
         "Increased thirst.",
@@ -1189,6 +1224,7 @@ window.WFA_DEFAULT_DATA = {
       id: "immersion-foot",
       name: "Immersion Foot (Trench Foot)",
       category: "Environmental - Cold",
+      description: "A non-freezing cold injury from prolonged exposure of the feet to cold and wet, leaving them pale, wrinkled and numb.",
       signs: [
         "Foot appears wrinkled, pale in color.",
         "Sometimes skin detaches from the deeper layers of the foot."
@@ -1207,6 +1243,7 @@ window.WFA_DEFAULT_DATA = {
       id: "frost-nip",
       name: "Frost Nip",
       category: "Environmental - Cold",
+      description: "A superficial, non-freezing cold injury of exposed skin, with no long-term damage expected.",
       inferred: ["management"],
       signs: [
         "Superficial, non-freezing injury of exposed skin."
@@ -1223,6 +1260,7 @@ window.WFA_DEFAULT_DATA = {
       id: "frost-bite",
       name: "Frost Bite",
       category: "Environmental - Cold",
+      description: "Freezing of the skin and the underlying tissue.",
       signs: [
         "Pale skin with few blisters.",
         "After thawing, turns red or purple; more blisters may appear.",
@@ -1245,6 +1283,7 @@ window.WFA_DEFAULT_DATA = {
       id: "ams",
       name: "Acute Mountain Sickness (AMS)",
       category: "Environmental - Altitude",
+      description: "A mild altitude illness from rapid ascent and reduced oxygen — headache, nausea and fatigue — reflecting early brain swelling.",
       signs: [
         "Headache.",
         "Fatigue.",
@@ -1266,6 +1305,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hape",
       name: "High Altitude Pulmonary Edema (HAPE)",
       category: "Environmental - Altitude",
+      description: "High Altitude Pulmonary Edema — fluid build-up in the lungs at altitude (typically above ~12,000 ft) that reduces the ability to breathe.",
       signs: [
         "Wet cough.",
         "Bloody sputum.",
@@ -1288,6 +1328,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hace",
       name: "High Altitude Cerebral Edema (HACE)",
       category: "Environmental - Altitude",
+      description: "High Altitude Cerebral Edema — fluid build-up in the brain at altitude that raises intracranial pressure; a severe, life-threatening altitude illness.",
       signs: [
         "Altered mentation.",
         "Ataxia (poor muscle control - clumsy movement, balance problems).",
@@ -1308,6 +1349,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-cramps",
       name: "Heat Cramps",
       category: "Environmental - Heat",
+      description: "Painful muscle spasms during or after intense activity in the heat, from fluid and electrolyte loss; an early warning that the body is overheating.",
       inferred: ["management"],
       signs: [
         "Painful muscle spasms during or after intense activity, usually in the legs or abdominal muscles."
@@ -1323,6 +1365,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-syncope",
       name: "Heat Syncope",
       category: "Environmental - Heat",
+      description: "A brief fainting spell caused by heat exposure and inadequate blood flow to the brain.",
       inferred: ["management"],
       signs: [
         "Momentary loss of consciousness because of heat exposure."
@@ -1338,6 +1381,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-exhaustion",
       name: "Heat Exhaustion",
       category: "Environmental - Heat",
+      description: "A heat illness from heavy loss of water and salt, with a raised body temperature usually under 104°F (40°C); it can progress to heat stroke.",
       inferred: ["management"],
       signs: [
         "Hypovolemia.",
@@ -1362,6 +1406,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-stroke",
       name: "Heat Stroke",
       category: "Environmental - Heat",
+      description: "The most severe heat illness — core temperature above 104°F (40°C) with altered mental status; a life-threatening emergency.",
       signs: [
         "Body temp above 40°C.",
         "May sweat, but NO sweat is a strong indication.",

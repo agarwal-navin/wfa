@@ -386,6 +386,10 @@
     frag.appendChild(el("h2", { class: "detail-title", text: inj.name }));
     frag.appendChild(el("span", { class: "badge", text: inj.category || "Uncategorized" }));
 
+    if (inj.description) {
+      frag.appendChild(el("p", { class: "injury-description", text: inj.description }));
+    }
+
     var inferred = inj.inferred || [];
     var s = sectionCard("signs", "Signs & Symptoms", inj.signs, inferred.indexOf("signs") !== -1);
     var m = sectionCard("management", "Management / Treatment", inj.management, inferred.indexOf("management") !== -1);
@@ -462,11 +466,12 @@
         (inj.category || "").toLowerCase().indexOf(ql) !== -1;
     });
 
-    // 2. Injuries by sign/symptom (and management/notes) - with the matching line
+    // 2. Injuries by description, sign/symptom (and management/notes) - with the matching line
     var symptomMatches = [];
     state.data.injuries.forEach(function (inj) {
       if (nameMatches.indexOf(inj) !== -1) return;
-      var hitLine = firstMatchingLine(inj.signs, ql) ||
+      var hitLine = firstMatchingLine(inj.description ? [inj.description] : [], ql) ||
+        firstMatchingLine(inj.signs, ql) ||
         firstMatchingLine(inj.management, ql) ||
         firstMatchingLine(inj.notes, ql);
       if (hitLine) symptomMatches.push({ inj: inj, line: hitLine });
@@ -604,6 +609,10 @@
     var catWrap = el("div", {}, [catSelect, newCatInput]);
     frag.appendChild(field("Category", catWrap));
 
+    var descTa = el("textarea", { placeholder: "A short sentence describing what this injury is" });
+    descTa.value = (inj && inj.description) ? inj.description : "";
+    frag.appendChild(field("Description", descTa));
+
     var signsTa = el("textarea", { placeholder: "One sign or symptom per line" });
     signsTa.value = (inj && inj.signs ? inj.signs : []).join("\n");
     frag.appendChild(field("Signs & Symptoms (one per line)", signsTa));
@@ -629,6 +638,7 @@
         var payload = {
           name: name,
           category: category,
+          description: descTa.value.trim(),
           signs: linesToArray(signsTa.value),
           management: linesToArray(mgmtTa.value),
           notes: linesToArray(notesTa.value)
@@ -639,6 +649,7 @@
           state.detail = { type: "injury", id: payload.id };
         } else {
           inj.name = payload.name; inj.category = payload.category;
+          inj.description = payload.description;
           inj.signs = payload.signs; inj.management = payload.management; inj.notes = payload.notes;
           state.detail = { type: "injury", id: inj.id };
         }

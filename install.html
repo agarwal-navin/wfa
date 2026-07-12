@@ -33,27 +33,48 @@
         }
 
         header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
             background: var(--red);
             color: #fff;
-            padding: calc(env(safe-area-inset-top) + 16px) 20px 16px;
+            padding: calc(env(safe-area-inset-top) + 10px) 14px 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+        }
+
+        .header-row {
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+            text-decoration: none;
+            color: inherit;
         }
 
         header img {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 7px;
-        }
-
-        header a {
-            display: inline-flex;
+            flex: none;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
         }
 
         header h1 {
             font-size: 1.25rem;
             margin: 0;
+            font-weight: 700;
+        }
+
+        .page-title {
+            font-size: 1.35rem;
+            margin: 4px 0 16px;
         }
 
         main {
@@ -121,15 +142,19 @@
 
 <body>
     <header>
-        <a href="./index.html" aria-label="Back to home">
-            <img src="./app/icons/icon-192.png" alt="Bearness First Aid home" />
-        </a>
-        <h1>Install &amp; use offline</h1>
+        <div class="header-row">
+            <a class="brand" href="./index.html" title="About this app">
+                <img src="./app/icons/icon-192.png" alt="" />
+                <h1>Bearness First Aid</h1>
+            </a>
+            <div id="menu-mount" class="header-actions"></div>
+        </div>
     </header>
 
     <main>
         <a class="back" href="./index.html" onclick="if(history.length>1){history.back();return false;}">&lsaquo;
             Back</a>
+        <h1 class="page-title">Install &amp; use offline</h1>
 
         <section>
             <h2>📱 iPhone / iPad (Safari)</h2>
@@ -173,6 +198,11 @@
 
         <a class="back" href="./app/index.html">Open the guide &rarr;</a>
     </main>
+
+    <script src="./menu.js"></script>
+    <script>
+        WFA.mountMenu({ mount: "menu-mount", base: "./", appActions: false });
+    </script>
 </body>
 
 </html>

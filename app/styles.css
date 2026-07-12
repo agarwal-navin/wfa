@@ -386,6 +386,13 @@ body {
   margin-bottom: 14px;
 }
 
+.injury-description {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+
 .section {
   background: var(--card);
   border: 1px solid var(--border);

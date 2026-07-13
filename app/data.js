@@ -517,7 +517,7 @@ window.WFA_DEFAULT_DATA = {
       id: "shock",
       name: "Shock",
       category: "Circulation & Shock",
-      description: "Inadequate perfusion — not enough oxygen and nutrients reach the body's cells. It is always secondary to an underlying cause, never spontaneous.",
+      description: "Inadequate perfusion - not enough oxygen and nutrients reach the body's cells. It is always secondary to an underlying cause, never spontaneous.",
       inferred: ["signs", "management"],
       signs: [
         "Inadequate perfusion - signs depend on the underlying cause.",
@@ -604,7 +604,7 @@ window.WFA_DEFAULT_DATA = {
       id: "musculoskeletal",
       name: "Musculoskeletal Injury",
       category: "Musculoskeletal",
-      description: "Trauma to the body's bones, joints, muscles, ligaments or tendons — including fractures, sprains and strains.",
+      description: "Trauma to the body's bones, joints, muscles, ligaments or tendons - including fractures, sprains and strains.",
       signs: [
         "Assessed with CMS = Circulation, Movement & Sensation.",
         "Circulation: pale, blue, purple or black skin, or swollen areas - bad! No pulse below the injury - bad!",
@@ -962,7 +962,7 @@ window.WFA_DEFAULT_DATA = {
       id: "asthma-copd",
       name: "Asthma / COPD",
       category: "Respiratory",
-      description: "Chronic airway conditions that narrow the airways and make breathing difficult — asthma from reversible bronchial spasm, COPD from ongoing obstructive lung disease.",
+      description: "Chronic airway conditions that narrow the airways and make breathing difficult - asthma from reversible bronchial spasm, COPD from ongoing obstructive lung disease.",
       signs: [
         "Wheezing & coughing.",
         "Chest tightness.",
@@ -1021,7 +1021,7 @@ window.WFA_DEFAULT_DATA = {
       id: "myocardial-infarction",
       name: "Myocardial Infarction (Heart Attack)",
       category: "Heart / Cardiac",
-      description: "A heart attack — blocked blood flow to the heart muscle starves and kills cardiac tissue.",
+      description: "A heart attack - blocked blood flow to the heart muscle starves and kills cardiac tissue.",
       signs: [
         "Chest pain (hallmark symptom).",
         "Weakness.",
@@ -1134,7 +1134,7 @@ window.WFA_DEFAULT_DATA = {
       id: "stroke",
       name: "Stroke",
       category: "Neurological & Spinal",
-      description: "A cerebral vascular accident — interrupted blood flow to part of the brain, from a clot or a bleed, that causes brain cell death.",
+      description: "A cerebral vascular accident - interrupted blood flow to part of the brain, from a clot or a bleed, that causes brain cell death.",
       signs: [
         "Altered mentation.",
         "Aphasia (inability to use or understand words).",
@@ -1283,7 +1283,7 @@ window.WFA_DEFAULT_DATA = {
       id: "ams",
       name: "Acute Mountain Sickness (AMS)",
       category: "Environmental - Altitude",
-      description: "A mild altitude illness from rapid ascent and reduced oxygen — headache, nausea and fatigue — reflecting early brain swelling.",
+      description: "A mild altitude illness from rapid ascent and reduced oxygen - headache, nausea and fatigue - reflecting early brain swelling.",
       signs: [
         "Headache.",
         "Fatigue.",
@@ -1305,7 +1305,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hape",
       name: "High Altitude Pulmonary Edema (HAPE)",
       category: "Environmental - Altitude",
-      description: "High Altitude Pulmonary Edema — fluid build-up in the lungs at altitude (typically above ~12,000 ft) that reduces the ability to breathe.",
+      description: "High Altitude Pulmonary Edema - fluid build-up in the lungs at altitude (typically above ~12,000 ft) that reduces the ability to breathe.",
       signs: [
         "Wet cough.",
         "Bloody sputum.",
@@ -1328,7 +1328,7 @@ window.WFA_DEFAULT_DATA = {
       id: "hace",
       name: "High Altitude Cerebral Edema (HACE)",
       category: "Environmental - Altitude",
-      description: "High Altitude Cerebral Edema — fluid build-up in the brain at altitude that raises intracranial pressure; a severe, life-threatening altitude illness.",
+      description: "High Altitude Cerebral Edema - fluid build-up in the brain at altitude that raises intracranial pressure; a severe, life-threatening altitude illness.",
       signs: [
         "Altered mentation.",
         "Ataxia (poor muscle control - clumsy movement, balance problems).",
@@ -1406,7 +1406,7 @@ window.WFA_DEFAULT_DATA = {
       id: "heat-stroke",
       name: "Heat Stroke",
       category: "Environmental - Heat",
-      description: "The most severe heat illness — core temperature above 104°F (40°C) with altered mental status; a life-threatening emergency.",
+      description: "The most severe heat illness - core temperature above 104°F (40°C) with altered mental status; a life-threatening emergency.",
       signs: [
         "Body temp above 40°C.",
         "May sweat, but NO sweat is a strong indication.",
